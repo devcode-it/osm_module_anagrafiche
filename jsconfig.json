@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "openstamanager": ["./vendor/devcode-it/openstamanager/resources/js"]
+    }
+  }
+}
