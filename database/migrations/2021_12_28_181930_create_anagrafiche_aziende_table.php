@@ -13,7 +13,6 @@ class CreateAnagraficheAziendeTable extends Migration
             $table->string('denominazione');
             $table->string('partita_iva');
             $table->char('codice_destinatario', 7);
-            $table->foreignId('anagrafica')->constrained('anagrafiche')->cascadeOnDelete();
             $table->timestamps();
         });
     }

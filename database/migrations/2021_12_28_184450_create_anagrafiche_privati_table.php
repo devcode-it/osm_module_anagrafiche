@@ -13,7 +13,6 @@ class CreateAnagrafichePrivatiTable extends Migration
             $table->string('nome');
             $table->string('cognome');
             $table->char('codice_fiscale', 16);
-            $table->foreignId('anagrafica')->constrained('anagrafiche')->cascadeOnDelete();
             $table->timestamps();
 
 

@@ -1,5 +1,6 @@
 import {Model} from 'openstamanager';
 
+// eslint-disable-next-line import/no-cycle
 import {Anagrafica} from './Anagrafica';
 
 /**
@@ -8,7 +9,7 @@ import {Anagrafica} from './Anagrafica';
  * @property {string} codiceFiscale
  */
 export class Privato extends Model {
-  jsonApiType = 'anagrafiche'
+  jsonApiType = 'anagrafiche/privati'
 
   anagrafica() {
     return this.hasOne(Anagrafica, 'anagrafica');

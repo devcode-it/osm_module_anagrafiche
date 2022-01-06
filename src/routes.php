@@ -11,6 +11,6 @@ Route::inertia('anagrafiche', 'openstamanager/anagrafiche::Records')
 
 Route::prefix('api')->group(function () {
     Route::apiResource('anagrafiche', AnagraficheController::class);
-    Route::apiResource('privati', PrivatiController::class);
-    Route::apiResource('aziende', AziendeController::class);
+    Route::apiResource('anagrafiche/privati', PrivatiController::class);
+    Route::apiResource('anagrafiche/aziende', AziendeController::class);
 });
