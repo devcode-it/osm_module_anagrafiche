@@ -4,6 +4,8 @@ import {type ColumnsT, type SectionsT,__, RecordsPage} from 'openstamanager';
 import {Anagrafica, Azienda, Privato} from '../Models';
 
 export class Records extends RecordsPage {
+  title = __('Anagrafiche');
+
   columns: ColumnsT = {
     denominazione: __('Ragione sociale'),
     tipo: __('Tipo'),

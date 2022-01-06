@@ -4,7 +4,7 @@ return [
     'drawer_entries' => [
         'anagrafiche' => [
             'icon' => 'account-group-outline',
-            'text' => __('Records')
+            'text' => __('Anagrafiche')
         ]
     ]
 ];
