@@ -1,61 +1,60 @@
 {
-    "name": "openstamanager/anagrafiche",
-    "description": "Modulo Anagrafiche per OpenSTAManager",
-    "type": "openstamanager-module",
-    "license": "MIT",
-    "keywords": [
-		"openstamanager",
-		"gestionale",
-		"modulo",
-        "anagrafiche",
-        "aziende",
-        "clienti",
-        "fornitori",
-        "enti"
-	],
-    "authors": [
-        {
-            "name": "Maicol Battistini",
-            "email": "maicolbattistini@live.it"
-        }
-    ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "require": {
-        "php": ">=8.0",
-        "devcode-it/openstamanager": "dev-3.x|@dev",
-        "menarasolutions/geographer": "^0",
-        "menarasolutions/geographer-it": "^0"
+  "name": "openstamanager/anagrafiche",
+  "description": "Modulo Anagrafiche per OpenSTAManager",
+  "type": "openstamanager-module",
+  "license": "MIT",
+  "keywords": [
+    "openstamanager",
+    "gestionale",
+    "modulo",
+    "anagrafiche",
+    "aziende",
+    "clienti",
+    "fornitori",
+    "enti"
+  ],
+  "authors": [
+    {
+      "name": "Maicol Battistini",
+      "email": "maicolbattistini@live.it"
     }
-    ,
-    "require-dev": {
-        "roave/security-advisories": "dev-latest"
-    },
-    "autoload": {
-        "psr-4": {
-            "Openstamanager\\Anagrafiche\\": "src/"
-        }
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Openstamanager\\Anagrafiche\\AnagraficheServiceProvider"
-            ]
-        },
-        "osm-modules": {
-            "anagrafiche": {
-                "icon": "account-group-outline"
-            }
-        }
-    },
-    "repositories": {
-        "openstamanager": {
-            "type": "vcs",
-            "url": "https://github.com/devcode-it/openstamanager"
-        }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=8.0",
+    "devcode-it/openstamanager": "3.x-dev",
+    "menarasolutions/geographer": "^0",
+    "menarasolutions/geographer-it": "^0",
+    "wikimedia/composer-merge-plugin": "^2"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+  "autoload": {
+    "psr-4": {
+      "Openstamanager\\Anagrafiche\\": "src/"
     }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Openstamanager\\Anagrafiche\\AnagraficheServiceProvider"
+      ]
+    },
+    "merge-plugin": {
+      "include": [
+        "composer.local.json"
+      ]
+    },
+    "osm-modules": {
+      "anagrafiche": {
+        "icon": "account-group-outline"
+      }
+    }
+  }
 }
