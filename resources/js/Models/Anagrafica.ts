@@ -1,9 +1,8 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign, import/no-cycle */
 import {Model} from 'openstamanager';
 
-import {Azienda} from './Azienda';
-// eslint-disable-next-line import/no-cycle
-import {Privato} from './Privato';
+import Azienda from './Azienda';
+import Privato from './Privato';
 
 /**
  * @property {'CLIENTE'|'FORNITORE'} tipo
@@ -19,14 +18,10 @@ import {Privato} from './Privato';
  * @property {string} pec
  * @property {string} sitoWeb
  */
-export class Anagrafica extends Model {
+export default class Anagrafica extends Model {
   jsonApiType = 'anagrafiche';
 
-  istanza() {
-    return this.hasOne('istanza');
-  }
-
-  getIstanza(): Azienda | Privato {
-    return this.getRelation('istanza');
+  getIstanza() {
+    return this.getRelation('istanza') as Azienda | Privato;
   }
 }

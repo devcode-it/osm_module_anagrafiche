@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
+    "types": [
+      "vite/client",
+      "vite-plugin-pwa/client"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "openstamanager": ["./vendor/devcode-it/openstamanager/resources/js"]
+    }
+  },
+  "include": [
+    "resources/**/*",
+    "vite.config.ts"
+  ]
+}

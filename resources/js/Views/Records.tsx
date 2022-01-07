@@ -1,9 +1,15 @@
 import {type Collection} from 'collect.js';
-import {type ColumnsT, type SectionsT,__, RecordsPage} from 'openstamanager';
+import {VnodeDOM} from 'mithril';
+import {
+  type ColumnsT,
+  type SectionsT,
+  IModel,
+  RecordsPage
+} from 'openstamanager';
 
 import {Anagrafica, Azienda, Privato} from '../Models';
 
-export class Records extends RecordsPage {
+export default class Records extends RecordsPage {
   title = __('Anagrafiche');
 
   columns: ColumnsT = {
@@ -134,7 +140,10 @@ export class Records extends RecordsPage {
 
   model = Anagrafica;
 
-  customSetter = async (model: Anagrafica, data: Collection<string, string>) => {
+  customSetter = async (
+    model: IModel<Anagrafica>,
+    data: Collection<string | File>
+  ) => {
     const relationModel = data.get('tipologia') === 'AZIENDA' ? Azienda : Privato;
     let relationInstance = model.getIstanza();
 
@@ -143,40 +152,41 @@ export class Records extends RecordsPage {
       relationInstance = new relationModel();
     }
     if (relationInstance instanceof Privato) {
-      const split = data.pull('denominazione').split(' ');
-      if (split.length === 1) {
+      const denominazione = data.pull('denominazione') as string;
+      const split = denominazione.split(' ');
+      if (split?.length === 1) {
         split.push('');
       }
       [relationInstance.nome, relationInstance.cognome] = split;
-      relationInstance.codiceFiscale = data.pull('codiceFiscale');
+      relationInstance.codiceFiscale = data.pull('codiceFiscale') as string;
     } else {
-      relationInstance.denominazione = data.pull('denominazione');
-      relationInstance.partitaIva = data.pull('partitaIva');
-      relationInstance.codiceDestinatario = data.pull('codiceDestinatario');
+      relationInstance.denominazione = data.pull('denominazione') as string;
+      relationInstance.partitaIva = data.pull('partitaIva') as string;
+      relationInstance.codiceDestinatario = data.pull('codiceDestinatario') as string;
     }
 
     const response = await relationInstance.save();
     model.setRelation('istanza', response.getModel());
 
     data.each((value, key) => {
-      model[key] = value;
+      model[key as string] = value;
     });
   };
 
-  oncreate(vnode) {
+  oncreate(vnode: VnodeDOM) {
     super.oncreate(vnode);
 
-    $('material-select#tipologia').on("selected", (event) => {
-      const tipologia = $(event.target);
-      const azienda = $("#dati-azienda [data-default-value]");
-      const privato = $("#dati-privato [data-default-value]");
+    $('material-select#tipologia').on('selected', (event: Event) => {
+      const tipologia = $(event.target as HTMLElement);
+      const azienda = $('#dati-azienda [data-default-value]');
+      const privato = $('#dati-privato [data-default-value]');
 
-      if (tipologia.val() === "AZIENDA") {
-        azienda.prop("disabled", false).prop("required", true);
-        privato.prop("disabled", true).prop("required", false);
+      if (tipologia.val() === 'AZIENDA') {
+        azienda.prop('disabled', false).prop('required', true);
+        privato.prop('disabled', true).prop('required', false);
       } else {
-        azienda.prop("disabled", true).prop("required", false);
-        privato.prop("disabled", false).prop("required", true);
+        azienda.prop('disabled', true).prop('required', false);
+        privato.prop('disabled', false).prop('required', true);
       }
     });
   }

@@ -1,22 +1,21 @@
 import {Model} from 'openstamanager';
 
 // eslint-disable-next-line import/no-cycle
-import {Anagrafica} from './Anagrafica';
+import Anagrafica from './Anagrafica';
 
-/**
- * @property {string} nome
- * @property {string} cognome
- * @property {string} codiceFiscale
- */
-export class Privato extends Model {
-  jsonApiType = 'anagrafiche/privati'
+export default class Privato extends Model {
+  jsonApiType = 'anagrafiche-privati';
+
+  codiceFiscale: string;
+  cognome: string;
+  nome: string;
 
   anagrafica() {
     return this.hasOne(Anagrafica, 'anagrafica');
   }
 
   getAnagrafiche() {
-    return this.getRelation('anagrafica');
+    return this.getRelation('anagrafica') as Anagrafica;
   }
 
   get denominazione() {

@@ -12,7 +12,16 @@ async function replaceImport() {
     .pipe(gulp.dest('./dist/'));
 }
 
+async function copyGlobals() {
+  gulp.src(["./vendor/devcode-it/openstamanager/resources/js/globals.d.ts"], {
+    allowEmpty: true
+  })
+    .pipe(replace(/(?<osm>from ["']\.\/.+["'])/, "from 'openstamanager'"))
+    .pipe(gulp.dest('./resources/js/'));
+}
+
 exports.default = replaceImport;
 exports.watch = function () {
-  gulp.watch('./dist/index.js', replaceImport);
+  gulp.watch('./dist/index.ts', replaceImport);
 }
+exports.copyGlobals = copyGlobals;
