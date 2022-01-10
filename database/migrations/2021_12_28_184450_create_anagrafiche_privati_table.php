@@ -11,11 +11,9 @@ class CreateAnagrafichePrivatiTable extends Migration
         Schema::create('anagrafiche_privati', static function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('cognome');
+            $table->string('cognome')->nullable();
             $table->char('codice_fiscale', 16);
             $table->timestamps();
-
-
         });
     }
 

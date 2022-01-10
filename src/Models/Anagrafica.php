@@ -21,29 +21,15 @@ class Anagrafica extends Model
         'email',
         'pec'
     ];
+    protected $with = ['privato', 'azienda'];
 
-    public function getTipologiaAttribute(string $value): string
+    public function privato(): BelongsTo
     {
-        return match ($value) {
-            'AZIENDA' => __('Azienda'),
-            'PRIVATO' => __('Privato'),
-        };
+        return $this->belongsTo(Privato::class);
     }
 
-    public function getTipoAttribute(string $value): string
+    public function azienda(): BelongsTo
     {
-        return match ($value) {
-            'CLIENTE' => __('Cliente'),
-            'FORNITORE' => __('Privato'),
-            'ENTE' => __('Ente pubblico')
-        };
-    }
-
-    public function istanza(): BelongsTo
-    {
-        return $this->belongsTo(match ($this->tipologia) {
-            'AZIENDA' => Azienda::class,
-            'PRIVATO' => Privato::class
-        }, 'anagrafica', 'istanza');
+        return $this->belongsTo(Azienda::class);
     }
 }

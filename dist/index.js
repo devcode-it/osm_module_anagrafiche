@@ -1,12 +1,5 @@
 import { Model, RecordsPage } from '../../../index.js';
 
-class Anagrafica extends Model {
-  jsonApiType = "anagrafiche";
-  getIstanza() {
-    return this.getRelation("istanza");
-  }
-}
-
 class Azienda extends Model {
   jsonApiType = "anagrafiche-aziende";
   denominazione;
@@ -22,9 +15,9 @@ class Azienda extends Model {
 
 class Privato extends Model {
   jsonApiType = "anagrafiche-privati";
-  codiceFiscale;
-  cognome;
   nome;
+  cognome;
+  codiceFiscale;
   anagrafica() {
     return this.hasOne(Anagrafica, "anagrafica");
   }
@@ -32,10 +25,82 @@ class Privato extends Model {
     return this.getRelation("anagrafica");
   }
   get denominazione() {
-    return this.nome + this.cognome;
+    let s = this.nome;
+    if (this.cognome) {
+      s += ` ${this.cognome}`;
+    }
+    return s;
   }
   set denominazione(value) {
     [this.nome, this.cognome] = value.split(" ");
+  }
+}
+
+class Anagrafica extends Model {
+  jsonApiType = "anagrafiche";
+  tipo;
+  tipologia;
+  indirizzo;
+  cap;
+  citta;
+  provincia;
+  nazione;
+  telefono;
+  cellulare;
+  email;
+  pec;
+  sitoWeb;
+  static relationships = ["privato", "azienda"];
+  getIstanza() {
+    return this.getPrivato() ?? this.getAzienda();
+  }
+  privato() {
+    return this.hasOne(Privato);
+  }
+  getPrivato() {
+    return this.getRelation("privato");
+  }
+  azienda() {
+    return this.hasOne(Azienda);
+  }
+  getAzienda() {
+    return this.getRelation("azienda");
+  }
+  get denominazione() {
+    return this.getIstanza().denominazione;
+  }
+  set denominazione(value) {
+    this.getIstanza().denominazione = value;
+  }
+  get partitaIva() {
+    const istanza = this.getIstanza();
+    return istanza instanceof Azienda ? istanza.partitaIva : void 0;
+  }
+  set partitaIva(value) {
+    const istanza = this.getIstanza();
+    if (istanza instanceof Azienda) {
+      istanza.partitaIva = value;
+    }
+  }
+  get codiceDestinatario() {
+    const istanza = this.getIstanza();
+    return istanza instanceof Azienda ? istanza.partitaIva : void 0;
+  }
+  set codiceDestinatario(value) {
+    const istanza = this.getIstanza();
+    if (istanza instanceof Azienda) {
+      istanza.codiceDestinatario = value;
+    }
+  }
+  get codiceFiscale() {
+    const istanza = this.getIstanza();
+    return istanza instanceof Privato ? istanza.codiceFiscale : void 0;
+  }
+  set codiceFiscale(value) {
+    const istanza = this.getIstanza();
+    if (istanza instanceof Privato) {
+      istanza.codiceFiscale = value;
+    }
   }
 }
 
@@ -167,26 +232,27 @@ class Records extends RecordsPage {
   ];
   model = Anagrafica;
   customSetter = async (model, data) => {
-    const relationModel = data.get("tipologia") === "AZIENDA" ? Azienda : Privato;
-    let relationInstance = model.getIstanza();
-    if (!(relationInstance instanceof relationModel)) {
-      relationInstance = new relationModel();
+    const relation = data.get("tipologia") === "AZIENDA" ? Azienda : Privato;
+    let relationModel = model.getIstanza();
+    if (!(relationModel instanceof relation)) {
+      relationModel = new relation();
     }
-    if (relationInstance instanceof Privato) {
+    if (relationModel instanceof Privato) {
       const denominazione = data.pull("denominazione");
       const split = denominazione.split(" ");
       if (split?.length === 1) {
         split.push("");
       }
-      [relationInstance.nome, relationInstance.cognome] = split;
-      relationInstance.codiceFiscale = data.pull("codiceFiscale");
+      [relationModel.nome, relationModel.cognome] = split;
+      relationModel.codiceFiscale = data.pull("codiceFiscale");
     } else {
-      relationInstance.denominazione = data.pull("denominazione");
-      relationInstance.partitaIva = data.pull("partitaIva");
-      relationInstance.codiceDestinatario = data.pull("codiceDestinatario");
+      relationModel.denominazione = data.pull("denominazione");
+      relationModel.partitaIva = data.pull("partitaIva");
+      relationModel.codiceDestinatario = data.pull("codiceDestinatario");
     }
-    const response = await relationInstance.save();
-    model.setRelation("istanza", response.getModel());
+    const response = await relationModel.save();
+    relationModel = response.getModel();
+    model.setRelation(relationModel instanceof Azienda ? "azienda" : "privato", relationModel);
     data.each((value, key) => {
       model[key] = value;
     });

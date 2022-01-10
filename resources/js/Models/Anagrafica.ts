@@ -4,24 +4,90 @@ import {Model} from 'openstamanager';
 import Azienda from './Azienda';
 import Privato from './Privato';
 
-/**
- * @property {'CLIENTE'|'FORNITORE'} tipo
- * @property {'AZIENDA'|'PRIVATO'|'ENTE'} tipologia
- * @property {string} indirizzo
- * @property {string} cap
- * @property {string} citta
- * @property {string} provincia
- * @property {string} nazione
- * @property {number} telefono
- * @property {number} cellulare
- * @property {string} email
- * @property {string} pec
- * @property {string} sitoWeb
- */
 export default class Anagrafica extends Model {
   jsonApiType = 'anagrafiche';
 
-  getIstanza() {
-    return this.getRelation('istanza') as Azienda | Privato;
+  public tipo: 'CLIENTE' | 'FORNITORE';
+  public tipologia: 'AZIENDA' | 'PRIVATO' | 'ENTE';
+  public indirizzo: string;
+  public cap: string;
+  public citta: string;
+  public provincia: string;
+  public nazione: string;
+  public telefono: number;
+  public cellulare: number;
+  public email: string;
+  public pec: string;
+  public sitoWeb: string;
+
+  public static relationships = ['privato', 'azienda'];
+
+  getIstanza(): Privato | Azienda {
+    return (this.getPrivato() ?? this.getAzienda());
+  }
+
+  privato() {
+    return this.hasOne(Privato);
+  }
+
+  getPrivato() {
+    return this.getRelation('privato') as Privato;
+  }
+
+  azienda() {
+    return this.hasOne(Azienda);
+  }
+
+  getAzienda() {
+    return this.getRelation('azienda') as Azienda;
+  }
+
+  // TODO: Getters e setters temporanei. Da sostituire con callback nel proxy
+
+  get denominazione() {
+    return this.getIstanza().denominazione;
+  }
+
+  set denominazione(value) {
+    this.getIstanza().denominazione = value;
+  }
+
+  get partitaIva() {
+    const istanza = this.getIstanza();
+    return istanza instanceof Azienda ? istanza.partitaIva : undefined;
+  }
+
+  set partitaIva(value) {
+    const istanza = this.getIstanza();
+
+    if (istanza instanceof Azienda) {
+      istanza.partitaIva = value as string;
+    }
+  }
+
+  get codiceDestinatario() {
+    const istanza = this.getIstanza();
+    return istanza instanceof Azienda ? istanza.partitaIva : undefined;
+  }
+
+  set codiceDestinatario(value) {
+    const istanza = this.getIstanza();
+
+    if (istanza instanceof Azienda) {
+      istanza.codiceDestinatario = value as string;
+    }
+  }
+
+  get codiceFiscale() {
+    const istanza = this.getIstanza();
+    return istanza instanceof Privato ? istanza.codiceFiscale : undefined;
+  }
+
+  set codiceFiscale(value) {
+    const istanza = this.getIstanza();
+
+    if (istanza instanceof Privato) {
+      istanza.codiceFiscale = value as string;
+    }
   }
 }

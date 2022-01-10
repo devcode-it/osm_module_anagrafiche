@@ -25,7 +25,8 @@ class CreateAnagraficheTable extends Migration
             $table->string('email')->nullable();
             $table->string('pec')->nullable();
             $table->string('sito_web')->nullable();
-            $table->foreignId('istanza');
+            $table->foreignId('privato_id')->nullable()->constrained('anagrafiche_privati')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('azienda_id')->nullable()->constrained('anagrafiche_aziende')->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();
         });
     }

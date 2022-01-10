@@ -144,31 +144,33 @@ export default class Records extends RecordsPage {
     model: IModel<Anagrafica>,
     data: Collection<string | File>
   ) => {
-    const relationModel = data.get('tipologia') === 'AZIENDA' ? Azienda : Privato;
-    let relationInstance = model.getIstanza();
+    const relation = data.get('tipologia') === 'AZIENDA' ? Azienda : Privato;
+    let relationModel = (model as Anagrafica).getIstanza();
 
-    if (!(relationInstance instanceof relationModel)) {
+    if (!(relationModel instanceof relation)) {
       // eslint-disable-next-line new-cap
-      relationInstance = new relationModel();
+      relationModel = new relation();
     }
-    if (relationInstance instanceof Privato) {
+    if (relationModel instanceof Privato) {
       const denominazione = data.pull('denominazione') as string;
       const split = denominazione.split(' ');
       if (split?.length === 1) {
         split.push('');
       }
-      [relationInstance.nome, relationInstance.cognome] = split;
-      relationInstance.codiceFiscale = data.pull('codiceFiscale') as string;
+      [relationModel.nome, relationModel.cognome] = split;
+      relationModel.codiceFiscale = data.pull('codiceFiscale') as string;
     } else {
-      relationInstance.denominazione = data.pull('denominazione') as string;
-      relationInstance.partitaIva = data.pull('partitaIva') as string;
-      relationInstance.codiceDestinatario = data.pull('codiceDestinatario') as string;
+      relationModel.denominazione = data.pull('denominazione') as string;
+      relationModel.partitaIva = data.pull('partitaIva') as string;
+      relationModel.codiceDestinatario = data.pull('codiceDestinatario') as string;
     }
 
-    const response = await relationInstance.save();
-    model.setRelation('istanza', response.getModel());
+    const response = await relationModel.save();
+    relationModel = response.getModel() as Azienda | Privato;
+    model.setRelation(relationModel instanceof Azienda ? 'azienda' : 'privato', relationModel);
 
-    data.each((value, key) => {
+    // @ts-ignore (temporary)
+    data.each((value: string | File, key: string | number) => {
       model[key as string] = value;
     });
   };

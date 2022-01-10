@@ -3,12 +3,15 @@ import {Model} from 'openstamanager';
 // eslint-disable-next-line import/no-cycle
 import Anagrafica from './Anagrafica';
 
+/**
+ * @property {string} nome
+ */
 export default class Privato extends Model {
   jsonApiType = 'anagrafiche-privati';
 
-  codiceFiscale: string;
-  cognome: string;
-  nome: string;
+  public nome: string;
+  public cognome?: string;
+  public codiceFiscale: string;
 
   anagrafica() {
     return this.hasOne(Anagrafica, 'anagrafica');
@@ -19,7 +22,13 @@ export default class Privato extends Model {
   }
 
   get denominazione() {
-    return this.nome + this.cognome;
+    let s = this.nome;
+
+    if (this.cognome) {
+      s += ` ${this.cognome}`;
+    }
+
+    return s;
   }
 
   set denominazione(value: string) {
