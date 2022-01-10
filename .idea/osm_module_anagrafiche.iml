@@ -21,7 +21,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/promises" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/guzzlehttp/guzzle" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/devcode-it/openstamanager" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/akaunting/laravel-setting" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/maicol07/laravel-json-api-resource" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
