@@ -172,7 +172,8 @@ class Records extends RecordsPage {
         },
         nazione: {
           label: __("Nazione"),
-          type: "text",
+          type: "select",
+          options: this.page.props.nazioni,
           icon: "flag-variant-outline"
         },
         telefono: {
