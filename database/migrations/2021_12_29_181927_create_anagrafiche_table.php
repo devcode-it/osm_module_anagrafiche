@@ -20,8 +20,8 @@ class CreateAnagraficheTable extends Migration
             $table->string('citta')->nullable();
             $table->char('provincia', 10)->nullable();
             $table->enum('nazione', $nazioni)->nullable();
-            $table->smallInteger('telefono')->nullable();
-            $table->smallInteger('cellulare')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('cellulare')->nullable();
             $table->string('email')->nullable();
             $table->string('pec')->nullable();
             $table->string('sito_web')->nullable();

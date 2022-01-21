@@ -14,8 +14,8 @@ export default class Anagrafica extends Model {
   public citta: string;
   public provincia: string;
   public nazione: string;
-  public telefono: number;
-  public cellulare: number;
+  public telefono: string;
+  public cellulare: string;
   public email: string;
   public pec: string;
   public sitoWeb: string;
