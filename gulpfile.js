@@ -9,6 +9,7 @@ async function replaceImport() {
     allowEmpty: true
   })
     .pipe(replace(/(?<osm>from ["']openstamanager["'])/, "from '../../../index.js'"))
+    .pipe(replace(/from ["']@(?<vendor>.+)\/(?<module>.+)["']/, "from '../../$1/$2/index.js'"))
     .pipe(gulp.dest('./dist/'));
 }
 
