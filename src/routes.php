@@ -2,17 +2,22 @@
 
 // Le route possono essere definite qui
 use Illuminate\Support\Facades\Route;
-use MenaraSolutions\Geographer\Country;
 use MenaraSolutions\Geographer\Earth;
 use Openstamanager\Anagrafiche\Http\Controllers\Api\AnagraficheController;
 use Openstamanager\Anagrafiche\Http\Controllers\Api\AziendeController;
 use Openstamanager\Anagrafiche\Http\Controllers\Api\PrivatiController;
 
 Route::inertia('anagrafiche', 'openstamanager/anagrafiche::Records', [
-    'nazioni' => array_map(static fn (Country $nazione) => [
-        'label' => $nazione->getName(app()->getLocale()),
-        'value' => $nazione->getCode(),
-    ], (new Earth())->getCountries()->toArray()),
+    'nazioni' => array_map(
+        static fn (array $nazione) => [
+            'label' => $nazione['name'],
+            'value' => $nazione['code'],
+        ],
+        (new Earth())
+            ->getCountries()
+            ->setLocale(app()->getLocale())
+            ->toArray()
+    ),
 ])
     ->name('anagrafiche');
 
