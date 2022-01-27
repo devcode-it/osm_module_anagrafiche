@@ -1,27 +1,33 @@
-import {type Collection} from 'collect.js';
+import {capitalize} from 'lodash-es';
 import {VnodeDOM} from 'mithril';
 import {
   type ColumnsT,
   type SectionsT,
-  IModel,
-  RecordsPage
+  RecordsPage,
+  SelectOptionsT
 } from 'openstamanager';
 
-import {Anagrafica, Azienda, Privato} from '../Models';
+import {Anagrafica} from '../Models';
 
 export default class Records extends RecordsPage {
   title = __('Anagrafiche');
 
   columns: ColumnsT = {
     denominazione: __('Ragione sociale'),
-    tipo: __('Tipo'),
-    tipologia: __('Tipologia'),
+    tipo: {
+      title: __('Tipo'),
+      valueModifier: (value) => capitalize(value)
+    },
+    tipologia: {
+      title: __('Tipologia'),
+      valueModifier: (value) => capitalize(value)
+    },
     citta: __('Città'),
     telefono: __('Telefono')
   };
 
-  sections: SectionsT = [
-    {
+  sections: SectionsT = {
+    generali: {
       heading: __('Dati anagrafici'),
       fields: {
         denominazione: {
@@ -80,7 +86,7 @@ export default class Records extends RecordsPage {
         nazione: {
           label: __('Nazione'),
           type: 'select',
-          options: this.page.props.nazioni,
+          options: this.page.props.nazioni as SelectOptionsT,
           icon: 'flag-variant-outline'
         },
         telefono: {
@@ -110,79 +116,42 @@ export default class Records extends RecordsPage {
         }
       }
     },
-    {
-      id: 'dati-azienda',
+    datiAzienda: {
       heading: __('Dati azienda'),
       fields: {
-        partitaIva: {
+        'azienda:partitaIva': {
           label: __('Partita IVA'),
           type: 'text',
           disabled: true
         },
-        codiceDestinatario: {
+        'azienda:codiceDestinatario': {
           label: __('Codice destinatario'),
           type: 'text',
           disabled: true
         }
       }
     },
-    {
-      id: 'dati-privato',
+    datiPrivato: {
       heading: __('Dati privato'),
       fields: {
-        codiceFiscale: {
+        'privato:codiceFiscale': {
           label: __('Codice fiscale'),
           type: 'text',
           disabled: true
         }
       }
     }
-  ];
+  };
 
   model = Anagrafica;
-
-  customSetter = async (
-    model: IModel<Anagrafica>,
-    data: Collection<string | File>
-  ) => {
-    const relation = data.get('tipologia') === 'AZIENDA' ? Azienda : Privato;
-    let relationModel = (model as Anagrafica).getIstanza();
-
-    if (!(relationModel instanceof relation)) {
-      // eslint-disable-next-line new-cap
-      relationModel = new relation();
-    }
-    if (relationModel instanceof Privato) {
-      const denominazione = data.pull('denominazione') as string;
-      const split = denominazione.split(' ');
-      if (split?.length === 1) {
-        split.push('');
-      }
-      [relationModel.nome, relationModel.cognome] = split;
-      relationModel.codiceFiscale = data.pull('codiceFiscale') as string;
-    } else {
-      relationModel.denominazione = data.pull('denominazione') as string;
-      relationModel.partitaIva = data.pull('partitaIva') as string;
-      relationModel.codiceDestinatario = data.pull('codiceDestinatario') as string;
-    }
-
-    const response = await relationModel.save();
-    relationModel = response.getModel() as Azienda | Privato;
-    model.setRelation(relationModel instanceof Azienda ? 'azienda' : 'privato', relationModel);
-
-    // @ts-ignore (temporary)
-    data.each((value: string | File, key: string | number) => {
-      model[key as string] = value;
-    });
-  };
 
   oncreate(vnode: VnodeDOM) {
     super.oncreate(vnode);
 
     $('material-select#tipologia').on('selected', (event: Event) => {
       const tipologia = $(event.target as HTMLElement);
-      const azienda = $('#dati-azienda [data-default-value]');
-      const privato = $('#dati-privato [data-default-value]');
+      const azienda = $('#datiAzienda [data-default-value]');
+      const privato = $('#datiPrivato [data-default-value]');
 
       if (tipologia.val() === 'AZIENDA') {
         azienda.prop('disabled', false).prop('required', true);

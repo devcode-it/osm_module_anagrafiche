@@ -42,52 +42,11 @@ export default class Anagrafica extends Model {
     return this.getRelation('azienda') as Azienda;
   }
 
-  // TODO: Getters e setters temporanei. Da sostituire con callback nel proxy
-
   get denominazione() {
     return this.getIstanza().denominazione;
   }
 
   set denominazione(value) {
     this.getIstanza().denominazione = value;
-  }
-
-  get partitaIva() {
-    const istanza = this.getIstanza();
-    return istanza instanceof Azienda ? istanza.partitaIva : undefined;
-  }
-
-  set partitaIva(value) {
-    const istanza = this.getIstanza();
-
-    if (istanza instanceof Azienda) {
-      istanza.partitaIva = value as string;
-    }
-  }
-
-  get codiceDestinatario() {
-    const istanza = this.getIstanza();
-    return istanza instanceof Azienda ? istanza.partitaIva : undefined;
-  }
-
-  set codiceDestinatario(value) {
-    const istanza = this.getIstanza();
-
-    if (istanza instanceof Azienda) {
-      istanza.codiceDestinatario = value as string;
-    }
-  }
-
-  get codiceFiscale() {
-    const istanza = this.getIstanza();
-    return istanza instanceof Privato ? istanza.codiceFiscale : undefined;
-  }
-
-  set codiceFiscale(value) {
-    const istanza = this.getIstanza();
-
-    if (istanza instanceof Privato) {
-      istanza.codiceFiscale = value as string;
-    }
   }
 }
