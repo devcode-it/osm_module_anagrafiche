@@ -13,8 +13,8 @@ class CreateAnagraficheTable extends Migration
             $nazioni = (new Earth())->getCountries()->pluck('code');
 
             $table->id();
-            $table->enum('tipo', ['CLIENTE', 'FORNITORE']);
-            $table->enum('tipologia', ['AZIENDA', 'PRIVATO', 'ENTE']);
+            $table->string('tipo');
+            $table->string('tipologia');
             $table->string('indirizzo')->nullable();
             $table->char('cap', 10)->nullable();
             $table->string('citta')->nullable();
