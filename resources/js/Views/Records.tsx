@@ -3,11 +3,13 @@ import {VnodeDOM} from 'mithril';
 import {
   type ColumnsT,
   type SectionsT,
+  IModel,
   RecordsPage,
   SelectOptionsT
 } from 'openstamanager';
 
 import {Anagrafica} from '../Models';
+import {Collection} from 'collect.js';
 
 export default class Records extends RecordsPage {
   title = __('Anagrafiche');
@@ -16,11 +18,11 @@ export default class Records extends RecordsPage {
     denominazione: __('Ragione sociale'),
     tipo: {
       title: __('Tipo'),
-      valueModifier: (value) => capitalize(value)
+      valueModifier: (value: string) => capitalize(value)
     },
     tipologia: {
       title: __('Tipologia'),
-      valueModifier: (value) => capitalize(value)
+      valueModifier: (value: string) => capitalize(value)
     },
     citta: __('Città'),
     telefono: __('Telefono')
@@ -161,5 +163,24 @@ export default class Records extends RecordsPage {
         privato.prop('disabled', false).prop('required', true);
       }
     });
+  }
+
+  async loadRelations(model: IModel, data: Collection<File | string>) {
+    const relations = await super.loadRelations(model, data);
+    delete relations[data.get('tipologia') === 'AZIENDA' ? 'privato' : 'azienda'];
+    return relations;
+  }
+
+  async saveFields(
+    model: IModel,
+    relations: Record<string, IModel>,
+    data: Collection<File | string>
+  ) {
+    const tipologia = data.get('tipologia') === 'AZIENDA' ? 'privato' : 'azienda';
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+    await super.saveFields(model, relations, data
+      .put(`${(data.get('tipologia') as string).toLowerCase()}:denominazione`, data.get('denominazione'))
+      .forget('denominazione')
+      .reject((item) => (item as string).startsWith(`${tipologia}:`)));
   }
 }

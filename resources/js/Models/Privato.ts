@@ -33,5 +33,6 @@ export default class Privato extends Model {
 
   set denominazione(value: string) {
     [this.nome, this.cognome] = value.split(' ');
+    this.setAttributes({nome: this.nome, cognome: this.cognome});
   }
 }

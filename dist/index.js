@@ -682,6 +682,27 @@ class Records extends RecordsPage {
       }
     });
   }
+  async loadRelations(model, data) {
+    const relations = await super.loadRelations(model, data);
+    delete relations[data.get("tipologia") === "AZIENDA" ? "privato" : "azienda"];
+    return relations;
+  }
+  async saveFields(model, relations, data) {
+    const tipologia = data.get("tipologia") === "AZIENDA" ? "privato" : "azienda";
+    await super.saveFields(model, relations, data.put(`${data.get("tipologia").toLowerCase()}:denominazione`, data.get("denominazione")).forget("denominazione").reject((item) => item.startsWith(`${tipologia}:`)));
+  }
+  async saveModelFields(model, relations, field, value) {
+    if (field === "denominazione") {
+      const select = document.querySelector("material-select#tipologia");
+      if (select) {
+        const tipologia = select.value.toLowerCase();
+        relations[tipologia].denominazione = value;
+        return true;
+      }
+      return false;
+    }
+    return super.saveModelField(model, relations, field, value);
+  }
 }
 
 export { Anagrafica, Azienda, Privato, Records };
