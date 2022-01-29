@@ -8,28 +8,28 @@
     "watch": "concurrently \"gulp watch\" npm:build-watch --raw"
   },
   "dependencies": {
-    "openstamanager": "dev",
     "case-when": "^1.2.0",
-    "collect.js": "^4.30.3",
     "cash-dom": "^8.1.0",
-    "lodash-es":  "^4.17.21"
+    "collect.js": "^4.31.3",
+    "lodash-es": "^4.17.21",
+    "openstamanager": "dev"
   },
   "devDependencies": {
+    "@maicol07/eslint-config": "^2.1.4",
+    "@openstamanager/vite-config": "github:devcode-it/openstamanager-vite-config",
     "@types/lodash-es": "^4.17.5",
     "@types/mithril": "^2.0.8",
-    "@types/ziggy-js": "^1.3.0",
-    "@maicol07/eslint-config": "^2.1.2",
-    "@openstamanager/vite-config": "github:devcode-it/openstamanager-vite-config",
-    "concurrently": "^6.5.1",
+    "@types/ziggy-js": "^1.3.1",
+    "concurrently": "^7.0.0",
     "gulp": "^4.0.2",
     "gulp-replace": "^1.1.3",
-    "sass": "^1.45.1",
-    "stylelint": "^14.2.0",
+    "sass": "^1.49.0",
+    "stylelint": "^14.3.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-recommended-scss": "^5.0.2",
     "stylelint-config-standard": "^24.0.0",
     "stylelint-scss": "^4.1.0",
-    "typescript": "^4.5.4",
-    "vite": "^2.7.10"
+    "typescript": "^4.5.5",
+    "vite": "^2.7.13"
   }
 }
