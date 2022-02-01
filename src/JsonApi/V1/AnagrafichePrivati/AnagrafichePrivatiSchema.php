@@ -10,7 +10,7 @@ use LaravelJsonApi\Eloquent\Fields\Str;
 use LaravelJsonApi\Eloquent\Filters\WhereIdIn;
 use LaravelJsonApi\Eloquent\Pagination\PagePagination;
 use LaravelJsonApi\Eloquent\Schema;
-use Openstamanager\Anagrafiche\Models\Azienda;
+use Openstamanager\Anagrafiche\Models\Privato;
 
 class AnagrafichePrivatiSchema extends Schema
 {
@@ -20,7 +20,7 @@ class AnagrafichePrivatiSchema extends Schema
      *
      * @var string
      */
-    public static string $model = Azienda::class;
+    public static string $model = Privato::class;
 
     /**
      * Get the resource fields.
