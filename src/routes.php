@@ -1,11 +1,9 @@
 <?php /** @noinspection UnusedFunctionResultInspection */
 
-// Le route possono essere definite qui
 use Illuminate\Support\Facades\Route;
+use LaravelJsonApi\Laravel\Facades\JsonApiRoute;
+use LaravelJsonApi\Laravel\Http\Controllers\JsonApiController;
 use MenaraSolutions\Geographer\Earth;
-use Openstamanager\Anagrafiche\Http\Controllers\Api\AnagraficheController;
-use Openstamanager\Anagrafiche\Http\Controllers\Api\AziendeController;
-use Openstamanager\Anagrafiche\Http\Controllers\Api\PrivatiController;
 
 Route::inertia('anagrafiche', 'openstamanager/anagrafiche::Records', [
     'nazioni' => array_map(
@@ -21,8 +19,10 @@ Route::inertia('anagrafiche', 'openstamanager/anagrafiche::Records', [
 ])
     ->name('anagrafiche');
 
-Route::prefix('api')->group(function () {
-    Route::apiResource('anagrafiche', AnagraficheController::class);
-    Route::apiResource('anagrafiche-privati', PrivatiController::class);
-    Route::apiResource('anagrafiche-aziende', AziendeController::class);
-});
+JsonApiRoute::server('v1')
+    ->prefix('v1')
+    ->resources(function ($server) {
+        $server->resource('anagrafiche', JsonApiController::class);
+        $server->resource('anagrafiche-privati', JsonApiController::class);
+        $server->resource('anagrafiche-aziende', JsonApiController::class);
+    });

@@ -87,6 +87,15 @@
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
       <path value="$PROJECT_DIR$/vendor/wikimedia/composer-merge-plugin" />
+      <path value="$PROJECT_DIR$/vendor/_laravel_idea" />
+      <path value="$PROJECT_DIR$/vendor/laravel-json-api/validation" />
+      <path value="$PROJECT_DIR$/vendor/laravel-json-api/eloquent" />
+      <path value="$PROJECT_DIR$/vendor/laravel-json-api/encoder-neomerx" />
+      <path value="$PROJECT_DIR$/vendor/laravel-json-api/core" />
+      <path value="$PROJECT_DIR$/vendor/laravel-json-api/neomerx-json-api" />
+      <path value="$PROJECT_DIR$/vendor/laravel-json-api/spec" />
+      <path value="$PROJECT_DIR$/vendor/laravel-json-api/exceptions" />
+      <path value="$PROJECT_DIR$/vendor/laravel-json-api/laravel" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
