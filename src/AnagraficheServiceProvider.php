@@ -2,8 +2,8 @@
 
 namespace Openstamanager\Anagrafiche;
 
+use Illuminate\Routing\Route;
 use Illuminate\Support\ServiceProvider;
-use JetBrains\PhpStorm\ArrayShape;
 
 class AnagraficheServiceProvider extends ServiceProvider
 {
@@ -17,7 +17,8 @@ class AnagraficheServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/anagrafiche.php', 'anagrafiche');
 
         $this->publishConfig();
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+
+        $this->loadRoutes();
 
         $this->publishes([
             __DIR__ . '/../dist' => public_path('build/vendor/openstamanager/anagrafiche')
@@ -41,5 +42,15 @@ class AnagraficheServiceProvider extends ServiceProvider
                 __DIR__ . '/../config/anagrafiche.php' => config_path('anagrafiche.php'),
             ], 'config');
         }
+    }
+
+    public function loadRoutes(): void {
+        Route::group(['middleware' => 'web'], function () {
+            $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+        });
+
+        Route::group(['prefix' => 'api', 'middleware' => 'api'], function () {
+            $this->loadRoutesFrom(__DIR__ . '/routes/api.php');
+        });
     }
 }

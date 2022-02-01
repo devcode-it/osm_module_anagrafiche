@@ -1,8 +1,6 @@
 <?php /** @noinspection UnusedFunctionResultInspection */
 
 use Illuminate\Support\Facades\Route;
-use LaravelJsonApi\Laravel\Facades\JsonApiRoute;
-use LaravelJsonApi\Laravel\Http\Controllers\JsonApiController;
 use MenaraSolutions\Geographer\Earth;
 
 Route::inertia('anagrafiche', 'openstamanager/anagrafiche::Records', [
@@ -18,11 +16,3 @@ Route::inertia('anagrafiche', 'openstamanager/anagrafiche::Records', [
     ),
 ])
     ->name('anagrafiche');
-
-JsonApiRoute::server('v1')
-    ->prefix('v1')
-    ->resources(function ($server) {
-        $server->resource('anagrafiche', JsonApiController::class);
-        $server->resource('anagrafiche-privati', JsonApiController::class);
-        $server->resource('anagrafiche-aziende', JsonApiController::class);
-    });
