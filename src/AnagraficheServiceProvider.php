@@ -2,7 +2,7 @@
 
 namespace Openstamanager\Anagrafiche;
 
-use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AnagraficheServiceProvider extends ServiceProvider
