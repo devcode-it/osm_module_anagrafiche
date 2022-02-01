@@ -34,7 +34,7 @@ class AnagrafichePrivatiSchema extends Schema
             Str::make('nome'),
             Str::make('cognome'),
             Str::make('codice_fiscale'),
-            BelongsTo::make('anagrafica'),
+            BelongsTo::make('anagrafica')->type('anagrafiche'),
             DateTime::make('createdAt')->sortable()->readOnly(),
             DateTime::make('updatedAt')->sortable()->readOnly(),
         ];

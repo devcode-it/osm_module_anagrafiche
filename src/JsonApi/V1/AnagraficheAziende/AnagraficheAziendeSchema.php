@@ -34,7 +34,7 @@ class AnagraficheAziendeSchema extends Schema
             Str::make('denominazione'),
             Str::make('partita_iva'),
             Str::make('codice_destinatario'),
-            BelongsTo::make('anagrafica'),
+            BelongsTo::make('anagrafica')->type('anagrafiche'),
             DateTime::make('createdAt')->sortable()->readOnly(),
             DateTime::make('updatedAt')->sortable()->readOnly(),
         ];

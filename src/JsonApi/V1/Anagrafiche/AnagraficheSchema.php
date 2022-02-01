@@ -43,8 +43,8 @@ class AnagraficheSchema extends Schema
             Str::make('email'),
             Str::make('pec'),
             Str::make('sito_web'),
-            HasOne::make('privato'),
-            HasOne::make('azienda'),
+            HasOne::make('privato')->type('anagrafiche-privati'),
+            HasOne::make('azienda')->type('anagrafiche-aziende'),
             DateTime::make('createdAt')->sortable()->readOnly(),
             DateTime::make('updatedAt')->sortable()->readOnly(),
         ];
