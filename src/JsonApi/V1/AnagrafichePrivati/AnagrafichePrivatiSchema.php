@@ -62,4 +62,13 @@ class AnagrafichePrivatiSchema extends Schema
         return PagePagination::make();
     }
 
+    /**
+     * Get the JSON:API resource type.
+     *
+     * @return string
+     */
+    public static function type(): string
+    {
+        return 'anagrafiche-privati';
+    }
 }
