@@ -18,6 +18,7 @@ class AnagrafichePrivatiRequest extends ResourceRequest
     {
         return [
             'nome' => ['required', 'string'],
+            'cognome' => ['nullable', 'string'],
             'codice_fiscale' => ['required', 'string'],
         ];
     }

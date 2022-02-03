@@ -18,7 +18,19 @@ class AnagraficheRequest extends ResourceRequest
     {
         return [
             'tipo' => ['required', 'string'],
-            'tipologia' => ['required', 'string']
+            'tipologia' => ['required', 'string'],
+            'indirizzo' => ['string'],
+            'cap' => ['string'],
+            'citta' => ['string'],
+            'provincia' => ['string'],
+            'nazione' => ['string'],
+            'telefono' => ['string'],
+            'cellulare' => ['string'],
+            'email' => ['string'],
+            'pec' => ['string'],
+            'sito_web' => ['string'],
+            'privato' => ['nullable', JsonApiRule::toOne()],
+            'azienda' => ['nullable', JsonApiRule::toOne()],
         ];
     }
 
