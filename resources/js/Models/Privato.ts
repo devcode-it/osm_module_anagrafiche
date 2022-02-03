@@ -7,7 +7,7 @@ import Anagrafica from './Anagrafica';
  * @property {string} nome
  */
 export default class Privato extends Model {
-  jsonApiType = 'anagrafiche-privati';
+  static jsonApiType = 'anagrafiche-privati';
 
   public nome: string;
   public cognome?: string;

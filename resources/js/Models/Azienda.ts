@@ -4,7 +4,7 @@ import {Model} from 'openstamanager';
 import Anagrafica from './Anagrafica';
 
 export default class Azienda extends Model {
-  jsonApiType = 'anagrafiche-aziende';
+  static jsonApiType = 'anagrafiche-aziende';
 
   denominazione: string;
   partitaIva: string;

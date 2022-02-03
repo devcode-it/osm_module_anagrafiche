@@ -5,7 +5,7 @@ import Azienda from './Azienda';
 import Privato from './Privato';
 
 export default class Anagrafica extends Model {
-  jsonApiType = 'anagrafiche';
+  static jsonApiType = 'anagrafiche';
 
   public tipo: 'CLIENTE' | 'FORNITORE';
   public tipologia: 'AZIENDA' | 'PRIVATO' | 'ENTE';
