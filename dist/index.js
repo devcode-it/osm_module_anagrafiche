@@ -652,7 +652,9 @@ class Records extends RecordsPage {
         "azienda:codiceDestinatario": {
           label: __("Codice destinatario"),
           type: "text",
-          disabled: true
+          disabled: true,
+          maxLength: 7,
+          minLength: 7
         }
       }
     },
