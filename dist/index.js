@@ -1,7 +1,7 @@
 import { Model, RecordsPage } from '../../../index.js';
 
 class Azienda extends Model {
-  jsonApiType = "anagrafiche-aziende";
+  static jsonApiType = "anagrafiche-aziende";
   denominazione;
   partitaIva;
   codiceDestinatario;
@@ -14,7 +14,7 @@ class Azienda extends Model {
 }
 
 class Privato extends Model {
-  jsonApiType = "anagrafiche-privati";
+  static jsonApiType = "anagrafiche-privati";
   nome;
   cognome;
   codiceFiscale;
@@ -33,11 +33,12 @@ class Privato extends Model {
   }
   set denominazione(value) {
     [this.nome, this.cognome] = value.split(" ");
+    this.setAttributes({ nome: this.nome, cognome: this.cognome });
   }
 }
 
 class Anagrafica extends Model {
-  jsonApiType = "anagrafiche";
+  static jsonApiType = "anagrafiche";
   tipo;
   tipologia;
   indirizzo;
@@ -690,18 +691,6 @@ class Records extends RecordsPage {
   async saveFields(model, relations, data) {
     const tipologia = data.get("tipologia") === "AZIENDA" ? "privato" : "azienda";
     await super.saveFields(model, relations, data.put(`${data.get("tipologia").toLowerCase()}:denominazione`, data.get("denominazione")).forget("denominazione").reject((item) => item.startsWith(`${tipologia}:`)));
-  }
-  async saveModelFields(model, relations, field, value) {
-    if (field === "denominazione") {
-      const select = document.querySelector("material-select#tipologia");
-      if (select) {
-        const tipologia = select.value.toLowerCase();
-        relations[tipologia].denominazione = value;
-        return true;
-      }
-      return false;
-    }
-    return super.saveModelField(model, relations, field, value);
   }
 }
 
