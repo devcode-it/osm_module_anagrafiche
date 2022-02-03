@@ -26,6 +26,12 @@
   },
   "include": [
     "resources/**/*",
-    "vite.config.ts"
-  ]
+    "vite.config.ts",
+    "gulpfile.ts"
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
 }
