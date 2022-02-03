@@ -29,8 +29,6 @@ class AnagraficheRequest extends ResourceRequest
             'email' => ['string'],
             'pec' => ['string'],
             'sito_web' => ['string'],
-            'privato' => JsonApiRule::toOne(),
-            'azienda' => JsonApiRule::toOne(),
         ];
     }
 
