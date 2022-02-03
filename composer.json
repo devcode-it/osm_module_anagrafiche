@@ -58,9 +58,9 @@
     }
   },
   "scripts": {
-    "post-package-update": "pnpm gulp copyGlobals && pnpm eslint --fix ./resources/js/globals.d.ts"
+    "post-autoload-dump": "pnpm gulp copyGlobals && pnpm eslint --fix ./resources/js/globals.d.ts"
   },
   "scripts-descriptions": {
-    "post-package-update": "Copia il file globals.d.ts dal package di OpenSTAManager"
+    "post-autoload-dump": "Copia il file globals.d.ts dal package di OpenSTAManager"
   }
 }
