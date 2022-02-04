@@ -16,6 +16,6 @@ class Azienda extends Model
 
     public function anagrafica(): HasOne
     {
-        return $this->hasOne(Anagrafica::class, 'istanza', 'anagrafica');
+        return $this->hasOne(Anagrafica::class);
     }
 }

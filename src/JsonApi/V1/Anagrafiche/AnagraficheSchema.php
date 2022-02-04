@@ -5,7 +5,7 @@ namespace Openstamanager\Anagrafiche\JsonApi\V1\Anagrafiche;
 use LaravelJsonApi\Eloquent\Contracts\Paginator;
 use LaravelJsonApi\Eloquent\Fields\DateTime;
 use LaravelJsonApi\Eloquent\Fields\ID;
-use LaravelJsonApi\Eloquent\Fields\Relations\HasOne;
+use LaravelJsonApi\Eloquent\Fields\Relations\BelongsTo;
 use LaravelJsonApi\Eloquent\Fields\Str;
 use LaravelJsonApi\Eloquent\Filters\WhereIdIn;
 use LaravelJsonApi\Eloquent\Pagination\PagePagination;
@@ -43,8 +43,8 @@ class AnagraficheSchema extends Schema
             Str::make('email'),
             Str::make('pec'),
             Str::make('sito_web'),
-            HasOne::make('privato')->type('anagrafiche-privati'),
-            HasOne::make('azienda')->type('anagrafiche-aziende'),
+            BelongsTo::make('privato')->type('anagrafiche-privati'),
+            BelongsTo::make('azienda')->type('anagrafiche-aziende'),
             DateTime::make('createdAt')->sortable()->readOnly(),
             DateTime::make('updatedAt')->sortable()->readOnly(),
         ];
