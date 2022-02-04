@@ -148,6 +148,7 @@ export default class Records extends RecordsPage {
   };
 
   model = Anagrafica;
+  relationsToDelete = ['privato', 'azienda'];
 
   oncreate(vnode: VnodeDOM) {
     super.oncreate(vnode);
