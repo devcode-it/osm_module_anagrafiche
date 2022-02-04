@@ -173,14 +173,14 @@ export default class Records extends RecordsPage {
     return relations;
   }
 
-  async saveFields(
+  async setFields(
     model: IModel,
     relations: Record<string, IModel>,
     data: Collection<File | string>
   ) {
     const tipologia = data.get('tipologia') === 'AZIENDA' ? 'privato' : 'azienda';
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    await super.saveFields(model, relations, data
+    await super.setFields(model, relations, data
       .put(`${(data.get('tipologia') as string).toLowerCase()}:denominazione`, data.get('denominazione'))
       .forget('denominazione')
       .reject((item) => (item as string).startsWith(`${tipologia}:`)));
