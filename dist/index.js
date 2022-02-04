@@ -670,6 +670,7 @@ class Records extends RecordsPage {
     }
   };
   model = Anagrafica;
+  relationsToDelete = ["privato", "azienda"];
   oncreate(vnode) {
     super.oncreate(vnode);
     $("material-select#tipologia").on("selected", (event) => {
@@ -690,9 +691,13 @@ class Records extends RecordsPage {
     delete relations[data.get("tipologia") === "AZIENDA" ? "privato" : "azienda"];
     return relations;
   }
-  async saveFields(model, relations, data) {
+  openNewRecordDialog(form, dialog) {
+    super.openNewRecordDialog(form, dialog);
+    form.find("#datiAzienda, #datiPrivato").find("[data-default-value]").prop("disabled", true);
+  }
+  async setFields(model, relations, data) {
     const tipologia = data.get("tipologia") === "AZIENDA" ? "privato" : "azienda";
-    await super.saveFields(model, relations, data.put(`${data.get("tipologia").toLowerCase()}:denominazione`, data.get("denominazione")).forget("denominazione").reject((item) => item.startsWith(`${tipologia}:`)));
+    await super.setFields(model, relations, data.put(`${data.get("tipologia").toLowerCase()}:denominazione`, data.get("denominazione")).forget("denominazione").reject((item) => item.startsWith(`${tipologia}:`)));
   }
 }
 

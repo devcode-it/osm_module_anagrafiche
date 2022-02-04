@@ -1,3 +1,5 @@
+import type {Cash} from 'cash-dom';
+import {Collection} from 'collect.js';
 import {capitalize} from 'lodash-es';
 import {VnodeDOM} from 'mithril';
 import {
@@ -9,7 +11,6 @@ import {
 } from 'openstamanager';
 
 import {Anagrafica} from '../Models';
-import {Collection} from 'collect.js';
 
 export default class Records extends RecordsPage {
   title = __('Anagrafiche');
@@ -172,6 +173,13 @@ export default class Records extends RecordsPage {
     const relations = await super.loadRelations(model, data);
     delete relations[data.get('tipologia') === 'AZIENDA' ? 'privato' : 'azienda'];
     return relations;
+  }
+
+  openNewRecordDialog(form: Cash, dialog: Cash) {
+    super.openNewRecordDialog(form, dialog);
+    form.find('#datiAzienda, #datiPrivato')
+      .find('[data-default-value]')
+      .prop('disabled', true);
   }
 
   async setFields(
