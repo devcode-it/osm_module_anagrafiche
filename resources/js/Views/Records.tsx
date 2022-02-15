@@ -182,16 +182,14 @@ export default class Records extends RecordsPage {
       .prop('disabled', true);
   }
 
-  async setFields(
+  async setter(
     model: IModel,
-    relations: Record<string, IModel>,
     data: Collection<File | string>
   ) {
     const tipologia = data.get('tipologia') === 'AZIENDA' ? 'privato' : 'azienda';
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-    await super.setFields(model, relations, data
+    return super.setter(model, data
       .put(`${(data.get('tipologia') as string).toLowerCase()}:denominazione`, data.get('denominazione'))
       .forget('denominazione')
-      .reject((item) => (item as string).startsWith(`${tipologia}:`)));
+      .filter((item: any, key: string) => !key.startsWith(`${tipologia}:`)));
   }
 }
