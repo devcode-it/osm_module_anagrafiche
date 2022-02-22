@@ -2,6 +2,7 @@ import { Model, RecordsPage } from '../../../index.js';
 
 class Azienda extends Model {
   static jsonApiType = "anagrafiche-aziende";
+  static relationships = ["anagrafica"];
   denominazione;
   partitaIva;
   codiceDestinatario;
@@ -15,6 +16,7 @@ class Azienda extends Model {
 
 class Privato extends Model {
   static jsonApiType = "anagrafiche-privati";
+  static relationships = ["anagrafica"];
   nome;
   cognome;
   codiceFiscale;
@@ -695,9 +697,9 @@ class Records extends RecordsPage {
     super.openNewRecordDialog(form, dialog);
     form.find("#datiAzienda, #datiPrivato").find("[data-default-value]").prop("disabled", true);
   }
-  async setFields(model, relations, data) {
+  async setter(model, data) {
     const tipologia = data.get("tipologia") === "AZIENDA" ? "privato" : "azienda";
-    await super.setFields(model, relations, data.put(`${data.get("tipologia").toLowerCase()}:denominazione`, data.get("denominazione")).forget("denominazione").reject((item) => item.startsWith(`${tipologia}:`)));
+    return super.setter(model, data.put(`${data.get("tipologia").toLowerCase()}:denominazione`, data.get("denominazione")).forget("denominazione").filter((item, key) => !key.startsWith(`${tipologia}:`)));
   }
 }
 
