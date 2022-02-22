@@ -5,6 +5,7 @@ import Anagrafica from './Anagrafica';
 
 export default class Azienda extends Model {
   static jsonApiType = 'anagrafiche-aziende';
+  static relationships = ['anagrafica'];
 
   denominazione: string;
   partitaIva: string;

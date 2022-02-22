@@ -8,6 +8,7 @@ import Anagrafica from './Anagrafica';
  */
 export default class Privato extends Model {
   static jsonApiType = 'anagrafiche-privati';
+  static relationships = ['anagrafica'];
 
   public nome: string;
   public cognome?: string;
