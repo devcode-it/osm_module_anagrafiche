@@ -33,9 +33,19 @@ export default class Records extends RecordsPage {
     generali: {
       heading: __('Dati anagrafici'),
       fields: {
-        denominazione: {
-          label: __('Denominazione'),
-          type: 'text',
+        tipologia: {
+          label: __('Tipologia'),
+          type: 'select',
+          options: [
+            {
+              label: __('Privato'),
+              value: 'PRIVATO'
+            },
+            {
+              label: __('Azienda'),
+              value: 'AZIENDA'
+            }
+          ],
           required: true
         },
         tipo: {
@@ -53,21 +63,25 @@ export default class Records extends RecordsPage {
           ],
           required: true
         },
-        tipologia: {
-          label: __('Tipologia'),
-          type: 'select',
-          options: [
-            {
-              label: __('Privato'),
-              value: 'PRIVATO'
-            },
-            {
-              label: __('Azienda'),
-              value: 'AZIENDA'
-            }
-          ],
-          required: true
+        'azienda:denominazione': {
+          label: __('Denominazione'),
+          type: 'text'
         },
+        'privato:nome': {
+          id: 'nome',
+          label: __('Nome'),
+          type: 'text'
+        },
+        'privato:cognome': {
+          id: 'cognome',
+          label: __('Cognome'),
+          type: 'text'
+        }
+      }
+    },
+    recapiti: {
+      heading: __('Dati di recapito'),
+      fields: {
         indirizzo: {
           label: __('Indirizzo'),
           type: 'text',
@@ -156,8 +170,8 @@ export default class Records extends RecordsPage {
 
     $('material-select#tipologia').on('selected', (event: Event) => {
       const tipologia = $(event.target as HTMLElement);
-      const azienda = $('#datiAzienda [data-default-value]');
-      const privato = $('#datiPrivato [data-default-value]');
+      const azienda = $('#datiAzienda [data-default-value], #denominazione');
+      const privato = $('#datiPrivato [data-default-value], #nome, #cognome');
 
       if (tipologia.val() === 'AZIENDA') {
         azienda.prop('disabled', false).prop('required', true);
@@ -180,6 +194,8 @@ export default class Records extends RecordsPage {
     form.find('#datiAzienda, #datiPrivato')
       .find('[data-default-value]')
       .prop('disabled', true);
+    form.find('#nome, #cognome')
+      .prop('disabled', true);
   }
 
   async setter(
@@ -188,8 +204,6 @@ export default class Records extends RecordsPage {
   ) {
     const tipologia = data.get('tipologia') === 'AZIENDA' ? 'privato' : 'azienda';
     return super.setter(model, data
-      .put(`${(data.get('tipologia') as string).toLowerCase()}:denominazione`, data.get('denominazione'))
-      .forget('denominazione')
       .filter((item: any, key: string) => !key.startsWith(`${tipologia}:`)));
   }
 }
