@@ -592,12 +592,10 @@ class Records extends RecordsPage {
           type: "text"
         },
         "privato:nome": {
-          id: "nome",
           label: __("Nome"),
           type: "text"
         },
         "privato:cognome": {
-          id: "cognome",
           label: __("Cognome"),
           type: "text"
         }
@@ -691,8 +689,8 @@ class Records extends RecordsPage {
     super.oncreate(vnode);
     $("material-select#tipologia").on("selected", (event) => {
       const tipologia = $(event.target);
-      const azienda = $("#datiAzienda [data-default-value], #denominazione");
-      const privato = $("#datiPrivato [data-default-value], #nome, #cognome");
+      const azienda = $("#datiAzienda [data-default-value], #azienda\\:denominazione");
+      const privato = $("#datiPrivato [data-default-value], #privato\\:nome, #privato\\:cognome");
       if (tipologia.val() === "AZIENDA") {
         azienda.prop("disabled", false).prop("required", true);
         privato.prop("disabled", true).prop("required", false);
@@ -710,7 +708,7 @@ class Records extends RecordsPage {
   openNewRecordDialog(form, dialog) {
     super.openNewRecordDialog(form, dialog);
     form.find("#datiAzienda, #datiPrivato").find("[data-default-value]").prop("disabled", true);
-    form.find("#nome, #cognome").prop("disabled", true);
+    form.find("#privato\\:nome, #privato\\:cognome, #azienda\\:denominazione").prop("disabled", true);
   }
   async setter(model, data) {
     const tipologia = data.get("tipologia") === "AZIENDA" ? "privato" : "azienda";
