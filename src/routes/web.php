@@ -1,19 +1,11 @@
-<?php /** @noinspection UnusedFunctionResultInspection */
+<?php
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use MenaraSolutions\Geographer\Earth;
 
-Inertia::share('nazioni', array_map(
-    static fn (array $nazione) => [
-        'label' => $nazione['name'],
-        'value' => $nazione['code'],
-    ],
-    (new Earth())
-        ->getCountries()
-        ->setLocale(app()->getLocale())
-        ->toArray()
-));
-
 Route::inertia('anagrafiche', 'openstamanager/anagrafiche::Records')
-    ->name('anagrafiche');
+    ->name('anagrafiche.index');
+
+Route::inertia('anagrafica/{id}', 'openstamanager/anagrafiche::Record')
+    ->name('anagrafiche.show');

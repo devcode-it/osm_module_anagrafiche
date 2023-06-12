@@ -24,11 +24,16 @@
   "require": {
     "php": ">=8.0",
     "devcode-it/openstamanager": "3.x-dev",
+    "ivanomatteo/laravel-codice-fiscale": "^0",
     "menarasolutions/geographer": "^0",
-    "menarasolutions/geographer-it": "^0",
-    "wikimedia/composer-merge-plugin": "^2"
+    "menarasolutions/geographer-it": "^0"
   },
   "require-dev": {
+    "friendsofphp/php-cs-fixer" : "^3",
+    "nunomaduro/larastan" : "^2.5.2",
+    "orchestra/testbench" : "^8",
+    "vimeo/psalm": "^5",
+    "psalm/plugin-laravel": "^2",
     "roave/security-advisories": "dev-latest"
   },
   "autoload": {
@@ -38,7 +43,10 @@
   },
   "config": {
     "preferred-install": "dist",
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "wikimedia/composer-merge-plugin": true
+    }
   },
   "extra": {
     "laravel": {
@@ -46,21 +54,13 @@
         "Openstamanager\\Anagrafiche\\AnagraficheServiceProvider"
       ]
     },
-    "merge-plugin": {
-      "include": [
-        "composer.local.json"
-      ]
+    "inertia": {
+      "openstamanager/anagrafiche": "resources/ts/Views"
     },
     "osm-modules": {
       "anagrafiche": {
         "icon": "account-group-outline"
       }
     }
-  },
-  "scripts": {
-    "post-autoload-dump": "pnpm gulp copyGlobals && pnpm eslint --fix ./resources/js/globals.d.ts"
-  },
-  "scripts-descriptions": {
-    "post-autoload-dump": "Copia il file globals.d.ts dal package di OpenSTAManager"
   }
 }

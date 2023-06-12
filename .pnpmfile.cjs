@@ -1,16 +1,23 @@
+// noinspection JSUnusedGlobalSymbols
+
 function readPackage(pkg) {
   /** @type {object} */
-  pkg.dependencies = {
-    ...pkg.peerDependencies,
-    ...pkg.dependencies,
+  if (pkg.name === 'openstamanager') {
+    pkg.peerDependencies = {
+      ...pkg.dependencies,
+      ...pkg.peerDependencies,
+    }
   }
-  pkg.peerDependencies = {};
-
   return pkg;
+}
+
+function afterAllResolved(lockfile, context) {
+  return lockfile
 }
 
 module.exports = {
   hooks: {
     readPackage,
+    afterAllResolved
   },
 };

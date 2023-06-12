@@ -2,10 +2,10 @@
 
 namespace Openstamanager\Anagrafiche;
 
+use App\ModuleServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
 
-class AnagraficheServiceProvider extends ServiceProvider
+class AnagraficheServiceProvider extends ModuleServiceProvider
 {
     /**
      * Bootstrap any application services.
@@ -17,15 +17,7 @@ class AnagraficheServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/anagrafiche.php', 'anagrafiche');
 
         $this->publishConfig();
-
         $this->loadRoutes();
-
-        $this->publishes([
-            __DIR__ . '/../dist' => public_path('build/vendor/openstamanager/anagrafiche')
-        ], 'anagrafiche:assets');
-        $this->publishes([
-            __DIR__ . '/../dist' => resource_path('static/vendor/openstamanager/anagrafiche')
-        ], 'anagrafiche:assets-dev');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }

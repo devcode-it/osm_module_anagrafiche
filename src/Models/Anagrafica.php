@@ -21,7 +21,6 @@ class Anagrafica extends Model
         'email',
         'pec'
     ];
-    protected $with = ['privato', 'azienda'];
 
     public function privato(): BelongsTo
     {
