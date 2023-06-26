@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: false
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -11,8 +15,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(mithril@2.2.2)
       '@maicol07/material-web-additions':
-        specifier: ^1.2.15
-        version: 1.2.15(@material/web@1.0.0-pre.10)
+        specifier: ^1.2.16
+        version: 1.2.16(@material/web@1.0.0-pre.11)
       '@marketto/codice-fiscale-utils':
         specifier: ^2.1.1
         version: 2.1.1
@@ -26,8 +30,8 @@ importers:
         specifier: ^14.0.0
         version: 14.0.0
       '@material/web':
-        specifier: 1.0.0-pre.10
-        version: 1.0.0-pre.10
+        specifier: 1.0.0-pre.11
+        version: 1.0.0-pre.11
       '@mdi/js':
         specifier: ^7.2.96
         version: 7.2.96
@@ -2502,17 +2506,17 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@maicol07/material-web-additions@1.2.15(@material/web@1.0.0-pre.10):
-    resolution: {integrity: sha512-p+T6x6AtWwJA13LRiy2ckgh+Y05Gn+9Hu+bSjvtUWp24EJD9Xx9ndj+6TdHo6Ka0LdRGbOJBURZDg8ULkS4aYQ==}
+  /@maicol07/material-web-additions@1.2.16(@material/web@1.0.0-pre.11):
+    resolution: {integrity: sha512-fBbdljmYv5LoHAxeWqHNNYV6fcjedRd+dSykYKsnSdSjwU/2/BY88A/PjTUr9IP0cnA2AVvsYCmTYn1IwKIJJQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      '@material/web': ^1.0.0-pre.7
+      '@material/web': 1.0.0-pre.11
     dependencies:
       '@material/card': 14.0.0
       '@material/data-table': 14.0.0
       '@material/layout-grid': 14.0.0
       '@material/mwc-base': 0.27.0
-      '@material/web': 1.0.0-pre.10
+      '@material/web': 1.0.0-pre.11
       lit: 2.7.5
       tslib: 2.5.3
     dev: false
@@ -3032,8 +3036,8 @@ packages:
       tslib: 2.5.3
     dev: false
 
-  /@material/web@1.0.0-pre.10:
-    resolution: {integrity: sha512-v7St+7NtZQc9yuLgU2+RIK+hGp/FVG1mr6qCvqIdOCMAKOPP+WNxGVGxmOgpBgJIGFZ83o4c6vnEXEODreWjlQ==}
+  /@material/web@1.0.0-pre.11:
+    resolution: {integrity: sha512-ndK/SlCw9Jk1i/5jS0fqXvxCAOL5/OuITZBfwfYW8C2eyh46tBouDN/2Gaa0Ws5dBYu3JB+zdeLK6+9aDieTtg==}
     dependencies:
       lit: 2.7.5
       safevalues: 0.4.3
