@@ -57,10 +57,10 @@
     "inertia": {
       "openstamanager/anagrafiche": "resources/ts/Views"
     },
-    "osm-modules": {
-      "anagrafiche": {
-        "icon": "account-group-outline"
-      }
+    "merge-plugin": {
+      "include": [
+        "composer.local.json"
+      ]
     }
   }
 }
