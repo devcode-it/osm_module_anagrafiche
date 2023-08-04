@@ -48,6 +48,12 @@
       "wikimedia/composer-merge-plugin": true
     }
   },
+  "repositories" : {
+    "restify": {
+      "type": "github",
+      "url": "https://github.com/maicol07/laravel-restify"
+    }
+  },
   "extra": {
     "laravel": {
       "providers": [
