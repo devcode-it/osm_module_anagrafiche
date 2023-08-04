@@ -3,7 +3,7 @@ import '@maicol07/material-web-additions/layout-grid/layout-grid.js';
 import '@maicol07/material-web-additions/layout-grid/layout-grid-inner.js';
 import '@material/web/button/filled-button.js';
 import '@material/web/button/text-button.js';
-import '@osm/Components/m3/FilledSelect';
+import '@material/web/select/filled-select.js';
 import '@material/web/select/select-option.js';
 import '@material/web/textfield/filled-text-field.js';
 import '../../scss/styles.scss';
@@ -85,8 +85,8 @@ export default class Record extends RecordPage<Anagrafica> {
     codiceFiscale: Stream<string>()
   };
 
-  oninit(vnode: Vnode<RecordPageAttributes<Anagrafica>, this>) {
-    super.oninit(vnode);
+  async oninit(vnode: Vnode<RecordPageAttributes<Anagrafica>, this>) {
+    await super.oninit(vnode);
     this.datiAnagraficiState.tipologia.map((tipologia) => {
       m.redraw();
       return tipologia;

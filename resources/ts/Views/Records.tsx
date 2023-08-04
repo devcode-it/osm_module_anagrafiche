@@ -5,7 +5,6 @@ import collect, {Collection} from 'collect.js';
 import {
   Children
 } from 'mithril';
-import {Match} from 'ts-pattern/dist/types/Match';
 
 export default class Records extends RecordsPage<Anagrafica> {
   title = __('Anagrafiche');
@@ -25,7 +24,7 @@ export default class Records extends RecordsPage<Anagrafica> {
     });
   }
 
-  protected cellValueModifier(value: any, attribute: string, record: Anagrafica): Match<string, unknown> {
+  protected cellValueModifier(value: any, attribute: string, record: Anagrafica) {
     return super.cellValueModifier(value, attribute, record)
       .with('denominazione', () => record.getIstanza()?.denominazione);
   }
