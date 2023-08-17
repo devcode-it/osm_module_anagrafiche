@@ -138,7 +138,7 @@ export default class Record extends RecordPage<Anagrafica> {
     };
     return (
       <>
-        <Form state={state} onsubmit={this.onFormSubmit.bind(this)}>
+        <Form state={state} onsubmit={this.onFormSubmit.bind(this)} additionalElementsSelector="md-filled-select">
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
