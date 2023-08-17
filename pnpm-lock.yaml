@@ -49,8 +49,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(mithril@2.2.2)
       '@maicol07/material-web-additions':
-        specifier: ^1.3.6
-        version: 1.3.6(@material/web@1.0.0-pre.14)
+        specifier: ^1.4.1
+        version: 1.4.1(@material/web@1.0.0-pre.15)
       '@material/mwc-snackbar':
         specifier: ^0.27.0
         version: 0.27.0
@@ -58,8 +58,8 @@ importers:
         specifier: ^0.27.0
         version: 0.27.0
       '@material/web':
-        specifier: 1.0.0-pre.14
-        version: 1.0.0-pre.14
+        specifier: 1.0.0-pre.15
+        version: 1.0.0-pre.15
       '@mdi/js':
         specifier: ^7.2.96
         version: 7.2.96
@@ -85,14 +85,14 @@ importers:
         specifier: ^2.2.2
         version: 2.2.2
       mithril-utilities:
-        specifier: ^1.2.4
-        version: 1.2.4(mithril@2.2.2)
+        specifier: ^1.2.6
+        version: 1.2.6(mithril@2.2.2)
       modern-normalize:
         specifier: ^2.0.0
         version: 2.0.0
       postcss-scss:
-        specifier: ^4.0.6
-        version: 4.0.6(postcss@8.4.27)
+        specifier: ^4.0.7
+        version: 4.0.7(postcss@8.4.28)
       prntr:
         specifier: ^2.0.18
         version: 2.0.18
@@ -100,8 +100,8 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1
       ts-pattern:
-        specifier: ^5.0.4
-        version: 5.0.4
+        specifier: ^5.0.5
+        version: 5.0.5
       tslib:
         specifier: ^2.6.1
         version: 2.6.1
@@ -114,7 +114,7 @@ importers:
         version: 2.3.0(typescript@5.1.6)
       '@openstamanager/vite-config':
         specifier: github:devcode-it/openstamanager-vite-config
-        version: github.com/devcode-it/openstamanager-vite-config/819ac61e3ad6ef6e22d5b09b411c6f935fa3b1a1(autoprefixer@10.4.14)(deepmerge-ts@4.3.0)(postcss@8.4.27)(vite@4.4.8)
+        version: github.com/devcode-it/openstamanager-vite-config/819ac61e3ad6ef6e22d5b09b411c6f935fa3b1a1(autoprefixer@10.4.14)(deepmerge-ts@4.3.0)(postcss@8.4.28)(vite@4.4.9)
       '@types/fs-extra':
         specifier: ^11.0.1
         version: 11.0.1
@@ -122,8 +122,8 @@ importers:
         specifier: ^2.0.13
         version: 2.0.13
       '@types/node':
-        specifier: ^20.4.6
-        version: 20.4.6
+        specifier: ^20.5.0
+        version: 20.5.0
       '@types/ziggy-js':
         specifier: ^1.3.2
         version: 1.3.2
@@ -143,23 +143,23 @@ importers:
         specifier: ^0.6.0
         version: 0.6.0
       laravel-vite-plugin:
-        specifier: ^0.7.8
-        version: 0.7.8(vite@4.4.8)
+        specifier: ^0.8.0
+        version: 0.8.0(vite@4.4.9)
       postcss:
-        specifier: ^8.4.27
-        version: 8.4.27
+        specifier: ^8.4.28
+        version: 8.4.28
       postcss-html:
         specifier: ^1.5.0
         version: 1.5.0
       sass:
-        specifier: ^1.64.2
-        version: 1.64.2
+        specifier: ^1.65.1
+        version: 1.65.1
       stylelint:
         specifier: ^15.10.2
         version: 15.10.2
       stylelint-config-clean-order:
-        specifier: ^5.0.1
-        version: 5.0.1(stylelint@15.10.2)
+        specifier: ^5.2.0
+        version: 5.2.0(stylelint@15.10.2)
       stylelint-config-html:
         specifier: ^1.1.0
         version: 1.1.0(postcss-html@1.5.0)(stylelint@15.10.2)
@@ -168,31 +168,31 @@ importers:
         version: 34.0.0(stylelint@15.10.2)
       stylelint-config-standard-scss:
         specifier: ^10.0.0
-        version: 10.0.0(postcss@8.4.27)(stylelint@15.10.2)
+        version: 10.0.0(postcss@8.4.28)(stylelint@15.10.2)
       stylelint-scss:
-        specifier: ^5.0.1
-        version: 5.0.1(stylelint@15.10.2)
+        specifier: ^5.1.0
+        version: 5.1.0(stylelint@15.10.2)
       type-fest:
-        specifier: ^4.1.0
-        version: 4.1.0
+        specifier: ^4.2.0
+        version: 4.2.0
       typed-scss-modules:
-        specifier: ^7.1.2
-        version: 7.1.2(sass@1.64.2)
+        specifier: ^7.1.4
+        version: 7.1.4(sass@1.65.1)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
       vite:
-        specifier: ^4.4.8
-        version: 4.4.8(@types/node@20.4.6)(sass@1.64.2)
+        specifier: ^4.4.9
+        version: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
       vite-plugin-laravel-translations:
         specifier: github:maicol07/vite-plugin-laravel-translations#patch-1
-        version: github.com/maicol07/vite-plugin-laravel-translations/7f85c14e2f3d9f5d2aa860c720547dfb1a945e90(vite@4.4.8)
+        version: github.com/maicol07/vite-plugin-laravel-translations/7f85c14e2f3d9f5d2aa860c720547dfb1a945e90(vite@4.4.9)
       vite-plugin-progress:
         specifier: ^0.0.7
-        version: 0.0.7(vite@4.4.8)
+        version: 0.0.7(vite@4.4.9)
       vite-plugin-pwa:
         specifier: ^0.16.4
-        version: 0.16.4(vite@4.4.8)(workbox-build@7.0.0)(workbox-window@7.0.0)
+        version: 0.16.4(vite@4.4.9)(workbox-build@7.0.0)(workbox-window@7.0.0)
 
 packages:
 
@@ -1812,8 +1812,8 @@ packages:
       - debug
     dev: false
 
-  /@maicol07/material-web-additions@1.3.6(@material/web@1.0.0-pre.14):
-    resolution: {integrity: sha512-inhjP+aUUU7C1oFwqe2lEEsTYoEpEfKk9ImKwzpILqnaNgrLY1WGzU7/5+QX55QZ5ZNy2SYbM839d1Gd2qw+Vw==}
+  /@maicol07/material-web-additions@1.4.1(@material/web@1.0.0-pre.15):
+    resolution: {integrity: sha512-3Zx+dXkQwuyVyYanOwOmwDMP3sy2kh6fDcsrUfWbUxyqhMeccdmHOlPMHqk3hmz9BUxWRVOpA1OpjOTFPZBfIA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@material/web': 1.0.0-pre.13
@@ -1822,7 +1822,7 @@ packages:
       '@material/data-table': 14.0.0
       '@material/layout-grid': 14.0.0
       '@material/mwc-base': 0.27.0
-      '@material/web': 1.0.0-pre.14
+      '@material/web': 1.0.0-pre.15
       lit: 2.8.0
       tslib: 2.6.1
     dev: false
@@ -2360,11 +2360,10 @@ packages:
       tslib: 2.6.1
     dev: false
 
-  /@material/web@1.0.0-pre.14:
-    resolution: {integrity: sha512-nR5argPpzkGNaIoPARgo23uVAmwYRHjZdnlZQJkIe+H8jA4AVdjcEAAgMOHnaT/ByhDShob8mwdf4+bgmA9mgw==}
+  /@material/web@1.0.0-pre.15:
+    resolution: {integrity: sha512-AuGOfuREI6b0u0qYhWrOT+IwrbXtsVNDtPHyFRaiABD3OIs9gRtkOUh+uSjMesbDT8BzMhbXDdCMbK+O4XOlLQ==}
     dependencies:
       lit: 2.8.0
-      safevalues: 0.4.3
       tslib: 2.6.1
     dev: false
 
@@ -2471,7 +2470,7 @@ packages:
     resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
     dependencies:
       '@types/jsonfile': 6.1.1
-      '@types/node': 20.4.6
+      '@types/node': 20.5.0
     dev: true
 
   /@types/history@4.7.11:
@@ -2489,7 +2488,7 @@ packages:
   /@types/jsonfile@6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 20.4.6
+      '@types/node': 20.5.0
     dev: true
 
   /@types/minimist@1.2.2:
@@ -2504,12 +2503,8 @@ packages:
     resolution: {integrity: sha512-F0KIgDJfy2nA3zMLmWGKxcH2ZVEtCZXHHdOQs2gSaQ27+lNeEfGxzkIw90aXswATX7AZ33tahPbzy6KAfUreVw==}
     dev: true
 
-  /@types/node@20.4.6:
-    resolution: {integrity: sha512-q0RkvNgMweWWIvSMDiXhflGUKMdIxBo2M2tYM/0kEGDueQByFzK4KZAgu5YHGFNxziTlppNpTIBcqHQAxlfHdA==}
-    dev: true
-
-  /@types/node@20.4.7:
-    resolution: {integrity: sha512-bUBrPjEry2QUTsnuEjzjbS7voGWCc30W0qzgMf90GPeDGFRakvrz47ju+oqDAKCXLUCe39u57/ORMl/O/04/9g==}
+  /@types/node@20.5.0:
+    resolution: {integrity: sha512-Mgq7eCtoTjT89FqNoTzzXg2XvCi5VMhRV6+I2aYanc6kQCBImeNaAYRs/DyoVqk1YEUJK5gN9VO7HRIdz4Wo3Q==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -2519,7 +2514,7 @@ packages:
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 20.4.7
+      '@types/node': 20.5.0
     dev: true
 
   /@types/semver@7.5.0:
@@ -2851,7 +2846,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /autoprefixer@10.4.14(postcss@8.4.27):
+  /autoprefixer@10.4.14(postcss@8.4.28):
     resolution: {integrity: sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -2863,7 +2858,7 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.27
+      postcss: 8.4.28
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -4876,7 +4871,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 20.4.7
+      '@types/node': 20.5.0
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: true
@@ -4995,15 +4990,15 @@ packages:
     resolution: {integrity: sha512-uMCj6+hZYDoffuvAJjFAPz56E9uoowFHmTkqRtRq5WyC5Q6Cu/fTZKNQpX/RbzChBYLLl3lo8CjFZBAZXq9qFg==}
     dev: true
 
-  /laravel-vite-plugin@0.7.8(vite@4.4.8):
-    resolution: {integrity: sha512-HWYqpQYHR3kEQ1LsHX7gHJoNNf0bz5z5mDaHBLzS+PGLCTmYqlU5/SZyeEgObV7z7bC/cnStYcY9H1DI1D5Udg==}
+  /laravel-vite-plugin@0.8.0(vite@4.4.9):
+    resolution: {integrity: sha512-6VjLI+azBpeK6rWBiKcb/En5GnTdYpL0U4zS8gXYvb2/VSq4mlau5H3NWpSktUDBMM1b97LLgICx5zevi8IY0w==}
     engines: {node: '>=14'}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
     dependencies:
       picocolors: 1.0.0
-      vite: 4.4.8(@types/node@20.4.6)(sass@1.64.2)
-      vite-plugin-full-reload: 1.0.5(vite@4.4.8)
+      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
+      vite-plugin-full-reload: 1.0.5(vite@4.4.9)
     dev: true
 
   /leven@3.1.0:
@@ -5261,8 +5256,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /mithril-utilities@1.2.4(mithril@2.2.2):
-    resolution: {integrity: sha512-JJA/86MJ/7bYNwcM+U9dWtsnqQs7NKw4gzgeXlVby0s27O8arvQGXiuEJ3aRJHhKLnIGz8x/H7JVs+VqXnOctg==}
+  /mithril-utilities@1.2.6(mithril@2.2.2):
+    resolution: {integrity: sha512-8guus+op2vWJVYT05q1nP9FSOz6OdqkyQE7kSdjCoxBH2C28mccm+nwWXO+UYenMF4ncdqOpoIm/aaVlV+THwA==}
     peerDependencies:
       mithril: ^2.0.4
     dependencies:
@@ -5603,8 +5598,8 @@ packages:
     dependencies:
       htmlparser2: 8.0.2
       js-tokens: 8.0.1
-      postcss: 8.4.27
-      postcss-safe-parser: 6.0.0(postcss@8.4.27)
+      postcss: 8.4.28
+      postcss-safe-parser: 6.0.0(postcss@8.4.28)
     dev: true
 
   /postcss-media-query-parser@0.2.3:
@@ -5642,22 +5637,22 @@ packages:
     resolution: {integrity: sha512-HvExULSwLqHLgUy1rl3ANIqCsvMS0WHss2UOsXhXnQaZ9VCc2oBvIpXrl00IUFT5ZDITME0o6oiXeiHr2SAIfw==}
     dev: true
 
-  /postcss-safe-parser@6.0.0(postcss@8.4.27):
+  /postcss-safe-parser@6.0.0(postcss@8.4.28):
     resolution: {integrity: sha512-FARHN8pwH+WiS2OPCxJI8FuRJpTVnn6ZNFiqAM2aeW2LwTHWWmWgIyKC6cUo0L8aeKiF/14MNvnpls6R2PBeMQ==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.3.3
     dependencies:
-      postcss: 8.4.27
+      postcss: 8.4.28
     dev: true
 
-  /postcss-scss@4.0.6(postcss@8.4.27):
-    resolution: {integrity: sha512-rLDPhJY4z/i4nVFZ27j9GqLxj1pwxE80eAzUNRMXtcpipFYIeowerzBgG3yJhMtObGEXidtIgbUpQ3eLDsf5OQ==}
+  /postcss-scss@4.0.7(postcss@8.4.28):
+    resolution: {integrity: sha512-xPv2GseoyXPa58Nro7M73ZntttusuCmZdeOojUFR5PZDz2BR62vfYx1w9TyOnp1+nYFowgOMipsCBhxzVkAEPw==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.4.19
     dependencies:
-      postcss: 8.4.27
+      postcss: 8.4.28
 
   /postcss-selector-parser@6.0.13:
     resolution: {integrity: sha512-EaV1Gl4mUEV4ddhDnv/xtj7sxwrwxdetHdWUGnT4VJQf+4d05v6lHYZr8N573k5Z0BViss7BDhfWtKS3+sfAqQ==}
@@ -5667,12 +5662,12 @@ packages:
       util-deprecate: 1.0.2
     dev: true
 
-  /postcss-sorting@8.0.2(postcss@8.4.27):
+  /postcss-sorting@8.0.2(postcss@8.4.28):
     resolution: {integrity: sha512-M9dkSrmU00t/jK7rF6BZSZauA5MAaBW4i5EnJXspMwt4iqTh/L9j6fgMnbElEOfyRyfLfVbIHj/R52zHzAPe1Q==}
     peerDependencies:
       postcss: ^8.4.20
     dependencies:
-      postcss: 8.4.27
+      postcss: 8.4.28
     dev: true
 
   /postcss-value-parser@4.2.0:
@@ -5688,8 +5683,8 @@ packages:
       supports-color: 3.2.3
     dev: true
 
-  /postcss@8.4.27:
-    resolution: {integrity: sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==}
+  /postcss@8.4.28:
+    resolution: {integrity: sha512-Z7V5j0cq8oEKyejIKfpD8b4eBy9cwW2JWPk0+fB1HOAMsfHbnAXLLS+PfVWlzMSLQaWttKDt607I0XHmpE67Vw==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.6
@@ -6007,12 +6002,8 @@ packages:
       regexp-tree: 0.1.27
     dev: true
 
-  /safevalues@0.4.3:
-    resolution: {integrity: sha512-pNCNTkx3xs7G5YJ/9CoeZZVUSPRjH0SEPM0QI5Z1FZRlLBviTFWlNKPs8PTvZvERV0gO7ie/t/Zc0S96JS4Xew==}
-    dev: false
-
-  /sass@1.64.2:
-    resolution: {integrity: sha512-TnDlfc+CRnUAgLO9D8cQLFu/GIjJIzJCGkE7o4ekIGQOH7T3GetiRR/PsTWJUHhkzcSPrARkPI+gNWn5alCzDg==}
+  /sass@1.65.1:
+    resolution: {integrity: sha512-9DINwtHmA41SEd36eVPQ9BJKpn7eKDQmUHmpI0y5Zv2Rcorrh0zS+cFrt050hdNbmmCNKTW3hV5mWfuegNRsEA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -6298,8 +6289,8 @@ packages:
     resolution: {integrity: sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==}
     dev: true
 
-  /stylelint-config-clean-order@5.0.1(stylelint@15.10.2):
-    resolution: {integrity: sha512-zKLXjTgrkZqiml0VXv7Syl11XLpzRErW+1/qSEjIQ+aHAFjGuRq6Uwal9OzxtDHvpoIhlc4wCYjougWDuLN5aA==}
+  /stylelint-config-clean-order@5.2.0(stylelint@15.10.2):
+    resolution: {integrity: sha512-eAB9ftPa8txPFY2oh4NIE3DFkNzqVEBIALUZhSXP0+6CISPjZPBoOV24shjC9DgOKr7rNPY52DAXBXIBI//Mhg==}
     peerDependencies:
       stylelint: '>=14'
     dependencies:
@@ -6318,7 +6309,7 @@ packages:
       stylelint: 15.10.2
     dev: true
 
-  /stylelint-config-recommended-scss@12.0.0(postcss@8.4.27)(stylelint@15.10.2):
+  /stylelint-config-recommended-scss@12.0.0(postcss@8.4.28)(stylelint@15.10.2):
     resolution: {integrity: sha512-5Bb2mlGy6WLa30oNeKpZvavv2lowJUsUJO25+OA68GFTemlwd1zbFsL7q0bReKipOSU3sG47hKneZ6Nd+ctrFA==}
     peerDependencies:
       postcss: ^8.3.3
@@ -6327,11 +6318,11 @@ packages:
       postcss:
         optional: true
     dependencies:
-      postcss: 8.4.27
-      postcss-scss: 4.0.6(postcss@8.4.27)
+      postcss: 8.4.28
+      postcss-scss: 4.0.7(postcss@8.4.28)
       stylelint: 15.10.2
       stylelint-config-recommended: 12.0.0(stylelint@15.10.2)
-      stylelint-scss: 5.0.1(stylelint@15.10.2)
+      stylelint-scss: 5.1.0(stylelint@15.10.2)
     dev: true
 
   /stylelint-config-recommended@12.0.0(stylelint@15.10.2):
@@ -6351,7 +6342,7 @@ packages:
       stylelint: 15.10.2
     dev: true
 
-  /stylelint-config-standard-scss@10.0.0(postcss@8.4.27)(stylelint@15.10.2):
+  /stylelint-config-standard-scss@10.0.0(postcss@8.4.28)(stylelint@15.10.2):
     resolution: {integrity: sha512-bChBEo1p3xUVWh/wenJI+josoMk21f2yuLDGzGjmKYcALfl2u3DFltY+n4UHswYiXghqXaA8mRh+bFy/q1hQlg==}
     peerDependencies:
       postcss: ^8.3.3
@@ -6360,9 +6351,9 @@ packages:
       postcss:
         optional: true
     dependencies:
-      postcss: 8.4.27
+      postcss: 8.4.28
       stylelint: 15.10.2
-      stylelint-config-recommended-scss: 12.0.0(postcss@8.4.27)(stylelint@15.10.2)
+      stylelint-config-recommended-scss: 12.0.0(postcss@8.4.28)(stylelint@15.10.2)
       stylelint-config-standard: 33.0.0(stylelint@15.10.2)
     dev: true
 
@@ -6390,13 +6381,13 @@ packages:
     peerDependencies:
       stylelint: ^14.0.0 || ^15.0.0
     dependencies:
-      postcss: 8.4.27
-      postcss-sorting: 8.0.2(postcss@8.4.27)
+      postcss: 8.4.28
+      postcss-sorting: 8.0.2(postcss@8.4.28)
       stylelint: 15.10.2
     dev: true
 
-  /stylelint-scss@5.0.1(stylelint@15.10.2):
-    resolution: {integrity: sha512-n87iCRZrr2J7//I/QFsDXxFLnHKw633U4qvWZ+mOW6KDAp/HLj06H+6+f9zOuTYy+MdGdTuCSDROCpQIhw5fvQ==}
+  /stylelint-scss@5.1.0(stylelint@15.10.2):
+    resolution: {integrity: sha512-E+KlQFXv1Euha43qw3q+wKBSli557wxbbo6/39DWhRNXlUa9Cz+FYrcgz+PT6ag0l6UisCYjAGCNhoSl4FcwlA==}
     peerDependencies:
       stylelint: ^14.5.1 || ^15.0.0
     dependencies:
@@ -6439,9 +6430,9 @@ packages:
       micromatch: 4.0.5
       normalize-path: 3.0.0
       picocolors: 1.0.0
-      postcss: 8.4.27
+      postcss: 8.4.28
       postcss-resolve-nested-selector: 0.1.1
-      postcss-safe-parser: 6.0.0(postcss@8.4.27)
+      postcss-safe-parser: 6.0.0(postcss@8.4.28)
       postcss-selector-parser: 6.0.13
       postcss-value-parser: 4.2.0
       resolve-from: 5.0.0
@@ -6579,8 +6570,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /ts-pattern@5.0.4:
-    resolution: {integrity: sha512-D5iVliqugv2C9541W2CNXFYNEZxr4TiHuLPuf49tKEdQFp/8y8fR0v1RExUvXkiWozKCwE7zv07C6EKxf0lKuQ==}
+  /ts-pattern@5.0.5:
+    resolution: {integrity: sha512-tL0w8U/pgaacOmkb9fRlYzWEUDCfVjjv9dD4wHTgZ61MjhuMt46VNWTG747NqW6vRzoWIKABVhFSOJ82FvXrfA==}
     dev: false
 
   /tsconfig-paths@3.14.2:
@@ -6646,6 +6637,11 @@ packages:
     engines: {node: '>=16'}
     dev: true
 
+  /type-fest@4.2.0:
+    resolution: {integrity: sha512-5zknd7Dss75pMSED270A1RQS3KloqRJA9XbXLe0eCxyw7xXFb3rd+9B0UQ/0E+LQT6lnrLviEolYORlRWamn4w==}
+    engines: {node: '>=16'}
+    dev: true
+
   /typed-array-buffer@1.0.0:
     resolution: {integrity: sha512-Y8KTSIglk9OZEr8zywiIHG/kmQ7KWyjseXs1CbSo8vC42w7hg2HgYTxSWwP0+is7bWDc1H+Fo026CpHFwm8tkw==}
     engines: {node: '>= 0.4'}
@@ -6684,8 +6680,8 @@ packages:
       is-typed-array: 1.1.10
     dev: true
 
-  /typed-scss-modules@7.1.2(sass@1.64.2):
-    resolution: {integrity: sha512-n9rZDqCq15I3oOWjDiUCtzjhMNda/hDDJ/tKJDxmgdZ3oNk23isrOZd41MuOQ5C5q+V6P0gYELDqbLrHsDQ8Hg==}
+  /typed-scss-modules@7.1.4(sass@1.65.1):
+    resolution: {integrity: sha512-7IjCBxxnNPV5iY1b6Vz2HufXku04iYF8EmWIPkqWtVlM6cX+azKbSVhIIGImQtJSgMWUsOwdlcs0HoqFcYKYsw==}
     hasBin: true
     peerDependencies:
       node-sass: ^7.0.3 || ^8.0.0
@@ -6705,7 +6701,7 @@ packages:
       glob: 7.2.3
       joycon: 3.1.1
       reserved-words: 0.1.2
-      sass: 1.64.2
+      sass: 1.65.1
       slash: 3.0.0
       yargs: 17.7.2
     dev: true
@@ -6819,17 +6815,17 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite-plugin-full-reload@1.0.5(vite@4.4.8):
+  /vite-plugin-full-reload@1.0.5(vite@4.4.9):
     resolution: {integrity: sha512-kVZFDFWr0DxiHn6MuDVTQf7gnWIdETGlZh0hvTiMXzRN80vgF4PKbONSq8U1d0WtHsKaFODTQgJeakLacoPZEQ==}
     peerDependencies:
       vite: ^2 || ^3 || ^4
     dependencies:
       picocolors: 1.0.0
       picomatch: 2.3.1
-      vite: 4.4.8(@types/node@20.4.6)(sass@1.64.2)
+      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
     dev: true
 
-  /vite-plugin-progress@0.0.7(vite@4.4.8):
+  /vite-plugin-progress@0.0.7(vite@4.4.9):
     resolution: {integrity: sha512-zyvKdcc/X+6hnw3J1HVV1TKrlFKC4Rh8GnDnWG/2qhRXjqytTcM++xZ+SAPnoDsSyWl8O93ymK0wZRgHAoglEQ==}
     engines: {node: '>=14', pnpm: '>=7.0.0'}
     peerDependencies:
@@ -6838,10 +6834,10 @@ packages:
       picocolors: 1.0.0
       progress: 2.0.3
       rd: 2.0.1
-      vite: 4.4.8(@types/node@20.4.6)(sass@1.64.2)
+      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
     dev: true
 
-  /vite-plugin-pwa@0.16.4(vite@4.4.8)(workbox-build@7.0.0)(workbox-window@7.0.0):
+  /vite-plugin-pwa@0.16.4(vite@4.4.9)(workbox-build@7.0.0)(workbox-window@7.0.0):
     resolution: {integrity: sha512-lmwHFIs9zI2H9bXJld/zVTbCqCQHZ9WrpyDMqosICDV0FVnCJwniX1NMDB79HGTIZzOQkY4gSZaVTJTw6maz/Q==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -6852,15 +6848,15 @@ packages:
       debug: 4.3.4
       fast-glob: 3.3.1
       pretty-bytes: 6.1.1
-      vite: 4.4.8(@types/node@20.4.6)(sass@1.64.2)
+      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
       workbox-build: 7.0.0
       workbox-window: 7.0.0
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite@4.4.8(@types/node@20.4.6)(sass@1.64.2):
-    resolution: {integrity: sha512-LONawOUUjxQridNWGQlNizfKH89qPigK36XhMI7COMGztz8KNY0JHim7/xDd71CZwGT4HtSRgI7Hy+RlhG0Gvg==}
+  /vite@4.4.9(@types/node@20.5.0)(sass@1.65.1):
+    resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -6887,11 +6883,11 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.4.6
+      '@types/node': 20.5.0
       esbuild: 0.18.17
-      postcss: 8.4.27
+      postcss: 8.4.28
       rollup: 3.27.2
-      sass: 1.64.2
+      sass: 1.65.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -7203,7 +7199,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  github.com/devcode-it/openstamanager-vite-config/819ac61e3ad6ef6e22d5b09b411c6f935fa3b1a1(autoprefixer@10.4.14)(deepmerge-ts@4.3.0)(postcss@8.4.27)(vite@4.4.8):
+  github.com/devcode-it/openstamanager-vite-config/819ac61e3ad6ef6e22d5b09b411c6f935fa3b1a1(autoprefixer@10.4.14)(deepmerge-ts@4.3.0)(postcss@8.4.28)(vite@4.4.9):
     resolution: {tarball: https://codeload.github.com/devcode-it/openstamanager-vite-config/tar.gz/819ac61e3ad6ef6e22d5b09b411c6f935fa3b1a1}
     id: github.com/devcode-it/openstamanager-vite-config/819ac61e3ad6ef6e22d5b09b411c6f935fa3b1a1
     name: '@openstamanager/vite-config'
@@ -7214,13 +7210,13 @@ packages:
       postcss: '>=8.4.18'
       vite: '>=3.1'
     dependencies:
-      autoprefixer: 10.4.14(postcss@8.4.27)
+      autoprefixer: 10.4.14(postcss@8.4.28)
       deepmerge-ts: 4.3.0
-      postcss: 8.4.27
-      vite: 4.4.8(@types/node@20.4.6)(sass@1.64.2)
+      postcss: 8.4.28
+      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
     dev: true
 
-  github.com/maicol07/vite-plugin-laravel-translations/7f85c14e2f3d9f5d2aa860c720547dfb1a945e90(vite@4.4.8):
+  github.com/maicol07/vite-plugin-laravel-translations/7f85c14e2f3d9f5d2aa860c720547dfb1a945e90(vite@4.4.9):
     resolution: {tarball: https://codeload.github.com/maicol07/vite-plugin-laravel-translations/tar.gz/7f85c14e2f3d9f5d2aa860c720547dfb1a945e90}
     id: github.com/maicol07/vite-plugin-laravel-translations/7f85c14e2f3d9f5d2aa860c720547dfb1a945e90
     name: vite-plugin-laravel-translations
@@ -7231,5 +7227,5 @@ packages:
     dependencies:
       glob: 10.3.3
       php-array-reader: 1.3.5
-      vite: 4.4.8(@types/node@20.4.6)(sass@1.64.2)
+      vite: 4.4.9(@types/node@20.5.0)(sass@1.65.1)
     dev: true
