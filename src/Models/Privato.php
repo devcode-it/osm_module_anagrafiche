@@ -3,6 +3,7 @@
 namespace Openstamanager\Anagrafiche\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Privato extends Model
@@ -14,8 +15,8 @@ class Privato extends Model
         'codice_fiscale'
     ];
 
-    public function anagrafica(): HasOne
+    public function anagrafica(): BelongsTo
     {
-        return $this->hasOne(Anagrafica::class);
+        return $this->belongsTo(Anagrafica::class);
     }
 }

@@ -3,7 +3,7 @@
 namespace Openstamanager\Anagrafiche\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Anagrafica extends Model
 {
@@ -22,13 +22,13 @@ class Anagrafica extends Model
         'pec'
     ];
 
-    public function privato(): BelongsTo
+    public function privato(): HasOne
     {
-        return $this->belongsTo(Privato::class);
+        return $this->hasOne(Privato::class);
     }
 
-    public function azienda(): BelongsTo
+    public function azienda(): HasOne
     {
-        return $this->belongsTo(Azienda::class);
+        return $this->hasOne(Azienda::class);
     }
 }

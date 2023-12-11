@@ -14,8 +14,8 @@ class Azienda extends Model
         'codice_destinatario'
     ];
 
-    public function anagrafica(): HasOne
+    public function anagrafica(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasOne(Anagrafica::class);
+        return $this->belongsTo(Anagrafica::class);
     }
 }

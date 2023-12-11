@@ -3,9 +3,8 @@
 namespace Openstamanager\Anagrafiche\Api;
 
 use App\Restify\Repository;
-use Binaryk\LaravelRestify\Fields\HasOne;
+use Binaryk\LaravelRestify\Fields\BelongsTo;
 use Binaryk\LaravelRestify\Http\Requests\RestifyRequest;
-use Openstamanager\Anagrafiche\Models\Anagrafica;
 use Openstamanager\Anagrafiche\Models\Privato;
 
 class PrivatoRepository extends Repository
@@ -18,16 +17,16 @@ class PrivatoRepository extends Repository
         return [
             field('nome')->rules('string')->required(),
             field('cognome')->rules('string'),
-            field('codice_fiscale')->label('codiceFiscale')->rules(['string', 'codfisc'])->required(),
-            field('created_at')->label('createdAt')->readOnly(),
-            field('updated_at')->label('updatedAt')->readOnly()
+            field('codice_fiscale')->rules(['string', 'codfisc'])->required(),
+            field('created_at')->readOnly(),
+            field('updated_at')->readOnly()
         ];
     }
 
     public static function related(): array
     {
         return [
-            HasOne::make('anagrafica', AnagraficaRepository::class),
+            BelongsTo::make('anagrafica', AnagraficaRepository::class)
         ];
     }
 }

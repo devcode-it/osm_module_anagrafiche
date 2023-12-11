@@ -3,7 +3,7 @@
 namespace Openstamanager\Anagrafiche\Api;
 
 use App\Restify\Repository;
-use Binaryk\LaravelRestify\Fields\BelongsTo;
+use Binaryk\LaravelRestify\Fields\HasOne;
 use Binaryk\LaravelRestify\Http\Requests\RestifyRequest;
 use Openstamanager\Anagrafiche\Models\Anagrafica;
 
@@ -27,18 +27,16 @@ class AnagraficaRepository extends Repository
             field('email')->rules(['string', 'nullable']),
             field('pec')->rules(['string', 'nullable']),
             field('sito_web')->rules(['string', 'nullable']),
-            field('created_at')->label('createdAt')->readOnly(),
-            field('updated_at')->label('updatedAt')->readOnly(),
-            BelongsTo::make('privato', PrivatoRepository::class),
-            BelongsTo::make('azienda', AziendaRepository::class)
+            field('created_at')->readOnly(),
+            field('updated_at')->readOnly()
         ];
     }
 
     public static function related(): array
     {
         return [
-            BelongsTo::make('privato', PrivatoRepository::class)->rules('required_without:azienda'),
-            BelongsTo::make('azienda', AziendaRepository::class)->rules('required_without:privato')
+            HasOne::make('privato', PrivatoRepository::class),
+            HasOne::make('azienda', AziendaRepository::class)
         ];
     }
 }
