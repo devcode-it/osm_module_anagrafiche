@@ -13,7 +13,6 @@
   "devDependencies": {
     "@maicol07/eslint-config": "^2.3.0",
     "@types/mithril": "^2.2.6",
-    "@types/ziggy-js": "^1.8.0",
     "fast-glob": "^3.3.2",
     "libxmljs2": "^0.33.0",
     "type-fest": "^4.8.3",

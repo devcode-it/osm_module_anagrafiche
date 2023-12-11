@@ -21,9 +21,6 @@ importers:
       '@types/mithril':
         specifier: ^2.2.6
         version: 2.2.6
-      '@types/ziggy-js':
-        specifier: ^1.8.0
-        version: 1.8.0
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.2
@@ -53,7 +50,7 @@ importers:
         version: 1.0.3(mithril@2.2.2)
       '@maicol07/material-web-additions':
         specifier: ^1.4.4
-        version: 1.4.4(@material/web@1.0.1)
+        version: 1.4.4(@material/web@1.0.2-nightly.739cf33.0)
       '@material/mwc-snackbar':
         specifier: ^0.27.0
         version: 0.27.0
@@ -61,8 +58,8 @@ importers:
         specifier: ^0.27.0
         version: 0.27.0
       '@material/web':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: nightly
+        version: 1.0.2-nightly.739cf33.0
       '@mdi/js':
         specifier: ^7.3.67
         version: 7.3.67
@@ -1817,7 +1814,7 @@ packages:
       - debug
     dev: false
 
-  /@maicol07/material-web-additions@1.4.4(@material/web@1.0.1):
+  /@maicol07/material-web-additions@1.4.4(@material/web@1.0.2-nightly.739cf33.0):
     resolution: {integrity: sha512-PVhRTHdNhKpj2BpdeTq3qVd7MX88xCUvKu3ZvKKRNL2GRFmsXbeMxcXxlvpghUkWAS41rWeqD29d4gsec4Os4g==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -1827,7 +1824,7 @@ packages:
       '@material/data-table': 14.0.0
       '@material/layout-grid': 14.0.0
       '@material/mwc-base': 0.27.0
-      '@material/web': 1.0.1
+      '@material/web': 1.0.2-nightly.739cf33.0
       lit: 2.8.0
       tslib: 2.6.2
     dev: false
@@ -2365,8 +2362,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@material/web@1.0.1:
-    resolution: {integrity: sha512-AilQTWdp+lgPzoUGNj/CyrMsULLdzhHiiYs6XXSIpX/t/eGQkiPP4CAwvjqANuV+YZC0hLIo+s64BIgZo8Ghkw==}
+  /@material/web@1.0.2-nightly.739cf33.0:
+    resolution: {integrity: sha512-8/KHUF7wKl+/yDPfc+snWEV4OHr+HE3Y4jO3BkVlE77OlfshdpZod9QZc08o4zRssf4FPkCW9GIlcGaHNDUr2Q==}
     dependencies:
       lit: 3.1.0
       tslib: 2.6.2
@@ -2626,13 +2623,6 @@ packages:
 
   /@types/trusted-types@2.0.7:
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
-
-  /@types/ziggy-js@1.8.0:
-    resolution: {integrity: sha512-5MIf/vogCutjZLjSqyizK/KLWKRe+ulnMdUZqrdEkG3K6/6k/UQhCGfM6WC4aGM8BQpEc+55fwSGAtEMqesDAQ==}
-    deprecated: This is a stub types definition. ziggy-js provides its own type definitions, so you do not need this installed.
-    dependencies:
-      ziggy-js: 1.8.1
-    dev: true
 
   /@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.44.0)(typescript@5.3.3):
     resolution: {integrity: sha512-TiZzBSJja/LbhNPvk6yc0JrX9XqhQ0hdh6M2svYfsHGejaKFIAGd9MQ+ERIMzLGlN/kZoYIgdxFV0PuljTKXag==}
