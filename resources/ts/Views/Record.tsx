@@ -175,21 +175,31 @@ export default class Record extends RecordPage<Anagrafica> {
     return collect({
       tipologia: (
         <md-filled-select label={__('Tipologia')} name="tipologia" required grid-span={6}>
-          <MdIcon icon={mdiShapeOutline} slot="leadingicon"/>
-          <md-select-option headline={__('Privato')} value="PRIVATO"/>
-          <md-select-option headline={__('Azienda')} value="AZIENDA"/>
-          <md-select-option headline={__('Ente')} value="ENTE"/>
+          <MdIcon icon={mdiShapeOutline} slot="leading-icon"/>
+          <md-select-option headline={__('Privato')} value="PRIVATO">
+            <div slot="headline">{__('Privato')}</div>
+          </md-select-option>
+          <md-select-option headline={__('Azienda')} value="AZIENDA">
+            <div slot="headline">{__('Azienda')}</div>
+          </md-select-option>
+          <md-select-option headline={__('Ente')} value="ENTE">
+            <div slot="headline">{__('Ente')}</div>
+          </md-select-option>
         </md-filled-select>
       ),
       tipo: (
         <md-filled-select label={__('Tipo')} name="tipo" required grid-span={6}>
-          <md-select-option headline={__('Fornitore')} value="FORNITORE"/>
-          <md-select-option headline={__('Cliente')} value="CLIENTE"/>
+          <md-select-option value="FORNITORE">
+            <div slot="headline">{__('Fornitore')}</div>
+          </md-select-option>
+          <md-select-option value="CLIENTE">
+            <div slot="headline">{__('Cliente')}</div>
+          </md-select-option>
         </md-filled-select>
       ),
       denominazione: (
         <md-filled-text-field label={__('Ragione sociale')} name="denominazione" grid-span={4} required={!this.isPrivato()} disabled={this.isPrivato()}>
-          <MdIcon icon={mdiDomain} slot="leadingicon"/>
+          <MdIcon icon={mdiDomain} slot="leading-icon"/>
         </md-filled-text-field>
       ),
       nome: <md-filled-text-field label={__('Nome')} name="nome" grid-span={4} required={this.isPrivato()} disabled={!this.isPrivato()}/>,
@@ -214,47 +224,49 @@ export default class Record extends RecordPage<Anagrafica> {
     return collect({
       indirizzo: (
         <md-filled-text-field label={__('Indirizzo')} name="indirizzo" grid-span={6}>
-          <MdIcon icon={mdiMapMarkerOutline} slot="leadingicon"/>
+          <MdIcon icon={mdiMapMarkerOutline} slot="leading-icon"/>
         </md-filled-text-field>
       ),
       citta: (
         <md-filled-text-field label={__('Città')} name="citta" grid-span={6}>
-          <MdIcon icon={mdiCityVariantOutline} slot="leadingicon"/>
+          <MdIcon icon={mdiCityVariantOutline} slot="leading-icon"/>
         </md-filled-text-field>
       ),
       cap: <md-filled-text-field label={__('CAP')} name="cap" grid-span={2}/>,
       provincia: <md-filled-text-field label={__('Provincia')} name="provincia" grid-span={2}/>,
       nazione: (
         <md-filled-select label={__('Nazione')} name="nazione" grid-span={2}>
-          <MdIcon icon={mdiFlagVariantOutline} slot="leadingicon"/>
+          <MdIcon icon={mdiFlagVariantOutline} slot="leading-icon"/>
           {Object.values(getAllCountries()).map((country) => (
-            <md-select-option key={country.id} headline={country.name} value={country.id}/>
+            <md-select-option key={country.id} value={country.id}>
+              <div slot="headline">{country.name}</div>
+            </md-select-option>
           ))}
         </md-filled-select>
       ),
       telefono: (
         <md-filled-text-field label={__('Telefono')} name="telefono" grid-span={3}>
-          <MdIcon icon={mdiPhoneClassic} slot="leadingicon"/>
+          <MdIcon icon={mdiPhoneClassic} slot="leading-icon"/>
         </md-filled-text-field>
       ),
       cellulare: (
         <md-filled-text-field label={__('Cellulare')} name="cellulare" grid-span={3}>
-          <MdIcon icon={mdiCellphone} slot="leadingicon"/>
+          <MdIcon icon={mdiCellphone} slot="leading-icon"/>
         </md-filled-text-field>
       ),
       email: (
         <md-filled-text-field label={__('Email')} name="email" grid-span={4}>
-          <MdIcon icon={mdiEmailOutline} slot="leadingicon"/>
+          <MdIcon icon={mdiEmailOutline} slot="leading-icon"/>
         </md-filled-text-field>
       ),
       pec: (
         <md-filled-text-field label={__('PEC')} name="pec" grid-span={4}>
-          <MdIcon icon={mdiEmailSealOutline} slot="leadingicon"/>
+          <MdIcon icon={mdiEmailSealOutline} slot="leading-icon"/>
         </md-filled-text-field>
       ),
       sitoWeb: (
         <md-filled-text-field label={__('Sito web')} name="sitoWeb" grid-span={4}>
-          <MdIcon icon={mdiWeb} slot="leadingicon"/>
+          <MdIcon icon={mdiWeb} slot="leading-icon"/>
         </md-filled-text-field>
       )
     });
