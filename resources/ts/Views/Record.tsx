@@ -8,7 +8,7 @@ import '@material/web/select/select-option.js';
 import '@material/web/textfield/filled-text-field.js';
 import '../../scss/styles.scss';
 
-import Anagrafica, {AnagraficaAttributes} from '@anagrafiche/Models/Anagrafica';
+import Anagrafica from '@anagrafiche/Models/Anagrafica';
 import Azienda from '@anagrafiche/Models/Azienda';
 import Privato from '@anagrafiche/Models/Privato';
 import {
@@ -26,13 +26,11 @@ import {
 } from '@mdi/js';
 import MdIcon from '@osm/Components/MdIcon';
 import RecordPage, {RecordPageAttributes} from '@osm/Components/Pages/RecordPage';
-import {JSONAPI} from '@osm/typings/request';
 import {
   isFormValid,
   showSnackbar
 } from '@osm/utils/misc';
 import collect, {Collection} from 'collect.js';
-import {Builder} from 'coloquent';
 import {
   CountryCode,
   getAllCountries
@@ -47,17 +45,15 @@ import {
   FormSubmitEvent,
   RequestError
 } from 'mithril-utilities';
-import {
-  match,
-  P
-} from 'ts-pattern';
+import {JsonapiErrorDoc} from 'spraypaint';
+import {ResponseError} from 'spraypaint/lib-esm/request';
 
 export default class Record extends RecordPage<Anagrafica> {
   recordType = Anagrafica;
 
   datiAnagraficiState = {
-    tipologia: Stream<AnagraficaAttributes['tipologia']>(),
-    tipo: Stream<AnagraficaAttributes['tipo']>(),
+    tipologia: Stream<Anagrafica['tipologia']>(),
+    tipo: Stream<Anagrafica['tipo']>(),
     denominazione: Stream<string>(),
     nome: Stream<string>(),
     cognome: Stream<string>()
@@ -93,8 +89,8 @@ export default class Record extends RecordPage<Anagrafica> {
     });
   }
 
-  modelQuery(): Builder<Anagrafica> {
-    return super.modelQuery().with(['privato', 'azienda']);
+  modelQuery() {
+    return super.modelQuery().includes(['privato', 'azienda']);
   }
 
   isPrivato(): boolean {
@@ -105,26 +101,24 @@ export default class Record extends RecordPage<Anagrafica> {
     await super.loadRecord(recordId);
 
     if (this.record && !this.record.isNew()) {
-      this.datiAnagraficiState.tipologia(this.record.getAttribute('tipologia'));
-      this.datiAnagraficiState.tipo(this.record.getAttribute('tipo'));
+      this.datiAnagraficiState.tipologia(this.record.tipologia);
+      this.datiAnagraficiState.tipo(this.record.tipo);
 
       for (const [key, value] of Object.entries(this.datiRecapitoState)) {
-        value(this.record.getAttribute(key) as string);
+        // @ts-expect-error
+        value(this.record[key] as string);
       }
 
       const istanza = this.record.getIstanza();
-      match(istanza)
-        .with(P.instanceOf(Azienda), (azienda: Azienda) => {
-          this.datiAnagraficiState.denominazione(azienda.getAttribute('denominazione'));
-          this.datiAziendaState.partitaIva(azienda.getAttribute('partitaIva'));
-          this.datiAziendaState.codiceDestinatario(azienda.getAttribute('codiceDestinatario'));
-        })
-        .with(P.instanceOf(Privato), (privato: Privato | undefined) => {
-          this.datiPrivatoState.codiceFiscale(privato!.getAttribute('codiceFiscale'));
-          this.datiAnagraficiState.nome(privato!.getAttribute('nome'));
-          this.datiAnagraficiState.cognome(privato!.getAttribute('cognome') ?? '');
-        })
-        .otherwise(() => {});
+      if (istanza instanceof Azienda) {
+        this.datiAnagraficiState.denominazione(istanza.denominazione);
+        this.datiAziendaState.partitaIva(istanza.partitaIva);
+        this.datiAziendaState.codiceDestinatario(istanza.codiceDestinatario);
+      } else if (istanza instanceof Privato) {
+        this.datiPrivatoState.codiceFiscale(istanza.codiceFiscale);
+        this.datiAnagraficiState.nome(istanza.nome);
+        this.datiAnagraficiState.cognome(istanza.cognome ?? '');
+      }
       m.redraw();
     }
   }
@@ -317,40 +311,38 @@ export default class Record extends RecordPage<Anagrafica> {
   }
 
   async save() {
-    this.record?.setAttributes({
+    this.record!.assignAttributes({
       tipo: this.datiAnagraficiState.tipo(),
       tipologia: this.datiAnagraficiState.tipologia(),
-      ...collect<Stream<string>>(this.datiRecapitoState).map((state) => state()).all()
+      ...collect<Stream<string>>(this.datiRecapitoState)
+        .map((state) => state())
+        .all()
     });
-
-    const relationName = this.isPrivato() ? 'privato' : 'azienda';
-    let relationModel = this.record?.getRelation(relationName);
-    if (!relationModel) {
-      relationModel = relationName === 'privato' ? new Privato() : new Azienda();
-    }
-    relationModel.setAttributes({
-      denominazione: this.datiAnagraficiState.denominazione(),
-      nome: this.datiAnagraficiState.nome(),
-      cognome: this.datiAnagraficiState.cognome(),
-      partitaIva: this.datiAziendaState.partitaIva(),
-      codiceDestinatario: this.datiAziendaState.codiceDestinatario(),
-      codiceFiscale: this.datiPrivatoState.codiceFiscale()
-    });
-
-    // Save models
     try {
-      const response = await relationModel.save();
-      if (response.getModelId()) {
-        this.record?.setRelation(relationName, relationModel);
-        console.log(this.record?.getAttributes(), this.record!.getRelations());
-        const saveResponse = await this.record?.save();
-        if (saveResponse?.getModelId()) {
+      if (await this.record!.save()) {
+        const relationName = this.isPrivato() ? 'privato' : 'azienda';
+        let relationModel = this.record![relationName];
+        if (!relationModel) {
+          relationModel = relationName === 'privato' ? new Privato() : new Azienda();
+        }
+
+        relationModel.assignAttributes({
+          denominazione: this.datiAnagraficiState.denominazione(),
+          nome: this.datiAnagraficiState.nome(),
+          cognome: this.datiAnagraficiState.cognome(),
+          partitaIva: this.datiAziendaState.partitaIva(),
+          codiceDestinatario: this.datiAziendaState.codiceDestinatario(),
+          codiceFiscale: this.datiPrivatoState.codiceFiscale()
+        });
+        relationModel.anagrafica = this.record!;
+
+        if (await relationModel.save()) {
           void showSnackbar(__('Salvataggio effettuato'));
         }
       }
     } catch (error: any) {
-      const apiError = error as RequestError<JSONAPI.RequestError['response'] & {message: string}>;
-      void showSnackbar(__('Errore durante il salvataggio: :error', {error: apiError.response.message}));
+      const {message} = (await (error as ResponseError).response!.json()) as JsonapiErrorDoc;
+      void showSnackbar(__('Errore durante il salvataggio: :error', {error: message}));
     }
   }
 }

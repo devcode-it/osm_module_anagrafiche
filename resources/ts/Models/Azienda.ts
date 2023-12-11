@@ -1,31 +1,22 @@
-import Model, {
-  ModelAttributes,
-  ModelRelations
-} from '@osm/Models/Model';
+import Record from '@osm/Models/Record';
+import {
+  Attr,
+  BelongsTo,
+  Model
+} from 'spraypaint';
 
 // eslint-disable-next-line import/no-cycle
 import Anagrafica from './Anagrafica';
 
-export interface AziendaAttributes extends ModelAttributes {
-  denominazione: string;
-  partitaIva: string;
-  codiceDestinatario: string;
-}
+@Model()
+export default class Azienda extends Record {
+  static jsonapiType = 'anagrafiche__aziende';
 
-export interface AziendaRelationships extends ModelRelations {
-  anagrafica: Anagrafica;
-}
+  @Attr() denominazione!: string;
+  @Attr() partitaIva!: string;
+  @Attr() codiceDestinatario!: string;
+  @Attr({persist: false}) createdAt!: string;
+  @Attr({persist: false}) updatedAt!: string;
 
-export default class Azienda extends Model<AziendaAttributes, AziendaRelationships> {
-  static get jsonApiType() {
-    return 'anagrafiche__aziende';
-  }
-
-  anagrafica() {
-    return this.hasOne(Anagrafica, 'anagrafica');
-  }
-
-  get denominazione() {
-    return this.getAttribute('denominazione');
-  }
+  @BelongsTo('anagrafica') anagrafica!: Anagrafica;
 }

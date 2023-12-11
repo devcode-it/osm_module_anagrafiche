@@ -8,7 +8,6 @@ import {
 
 export default class Records extends RecordsPage<Anagrafica> {
   title = __('Anagrafiche');
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   modelType = Anagrafica;
   recordPageRouteName = 'anagrafiche.show';
 
@@ -30,7 +29,6 @@ export default class Records extends RecordsPage<Anagrafica> {
   }
 
   modelQuery() {
-    return super.modelQuery()
-      .with(['privato', 'azienda']);
+    return super.modelQuery().includes(['privato', 'azienda']);
   }
 }

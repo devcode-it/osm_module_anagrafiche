@@ -9,7 +9,7 @@ import {
   mdiAccountGroupOutline
 } from '@mdi/js';
 import {manageDrawerEntries} from '@osm/Components/extend/utils';
-import {DrawerEntry} from '@osm/Components/layout/DrawerEntry';
+import {DrawerItem} from '@osm/Components/layout/DrawerItem';
 
 manageDrawerEntries((entries) => entries
-  .put('anagrafiche', <DrawerEntry href={route('anagrafiche.index')} icon={mdiAccountGroupOutline}>{__('Anagrafiche')}</DrawerEntry>));
+  .put('anagrafiche', <DrawerItem href={route('anagrafiche.index')} icon={mdiAccountGroupOutline}>{__('Anagrafiche')}</DrawerItem>));

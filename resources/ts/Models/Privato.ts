@@ -1,33 +1,29 @@
-import Model, {
-  ModelAttributes,
-  ModelRelations
-} from '@osm/Models/Model';
+import Record from '@osm/Models/Record';
+import {
+  Attr,
+  BelongsTo,
+  Model
+} from 'spraypaint';
 
 // eslint-disable-next-line import/no-cycle
 import Anagrafica from './Anagrafica';
 
-export interface PrivatoAttributes extends ModelAttributes {
-  nome: string;
-  cognome?: string;
-  codiceFiscale: string;
-}
+@Model()
+export default class Privato extends Record {
+  static jsonapiType = 'anagrafiche__privati';
 
-export interface PrivatoRelationships extends ModelRelations {
-  anagrafica: Anagrafica;
-}
-export default class Privato extends Model<PrivatoAttributes, PrivatoRelationships> {
-  static get jsonApiType() {
-    return 'anagrafiche__privati';
-  }
+  @Attr() nome!: string;
+  @Attr() cognome?: string;
+  @Attr() codiceFiscale!: string;
+  @Attr({persist: false}) createdAt!: string;
+  @Attr({persist: false}) updatedAt!: string;
 
-  anagrafica() {
-    return this.hasOne(Anagrafica, 'anagrafica');
-  }
+  @BelongsTo('anagrafica') anagrafica!: Anagrafica;
 
   get denominazione() {
-    let denominazione = this.getAttribute('nome');
+    let denominazione = this.nome;
 
-    const cognome = this.getAttribute('cognome');
+    const {cognome} = this;
     if (cognome) {
       denominazione += ` ${cognome}`;
     }
@@ -37,6 +33,7 @@ export default class Privato extends Model<PrivatoAttributes, PrivatoRelationshi
 
   set denominazione(value: string) {
     const [nome, cognome] = value.split(' ');
-    this.setAttributes({nome, cognome});
+    this.nome = nome;
+    this.cognome = cognome;
   }
 }
