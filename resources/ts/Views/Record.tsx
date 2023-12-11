@@ -1,8 +1,8 @@
-import '@maicol07/material-web-additions/card/outlined-card.js';
 import '@maicol07/material-web-additions/layout-grid/layout-grid.js';
 import '@maicol07/material-web-additions/layout-grid/layout-grid-inner.js';
-import '@material/web/button/filled-button.js';
 import '@material/web/button/text-button.js';
+import '@material/web/fab/fab.js';
+import '@material/web/labs/card/outlined-card.js';
 import '@material/web/select/filled-select.js';
 import '@material/web/select/select-option.js';
 import '@material/web/textfield/filled-text-field.js';
@@ -42,12 +42,12 @@ import {
 import Stream from 'mithril/stream';
 import {
   Form,
-  FormSubmitEvent,
-  RequestError
+  FormSubmitEvent
 } from 'mithril-utilities';
 import {JsonapiErrorDoc} from 'spraypaint';
 import {ResponseError} from 'spraypaint/lib-esm/request';
 
+// noinspection JSUnusedGlobalSymbols
 export default class Record extends RecordPage<Anagrafica> {
   recordType = Anagrafica;
 
@@ -142,17 +142,17 @@ export default class Record extends RecordPage<Anagrafica> {
             {super.contents(vnode)}
             {this.datiAnagrafici()}
             {this.datiRecapito()}
+            <div style={{display: 'flex', gap: '16px'}}>
+              {this.datiAzienda()}
+              {this.datiPrivato()}
+            </div>
           </div>
-          <md-layout-grid>
-            {this.datiAzienda()}
-            {this.datiPrivato()}
-          </md-layout-grid>
           <md-text-button>
           </md-text-button>
-          <md-filled-button type="submit" style={{float: 'right'}}>
+          <md-fab className="sticky-bottom" type="submit">
             {__('Salva')}
             <MdIcon icon={mdiContentSaveOutline} slot="icon"/>
-          </md-filled-button>
+          </md-fab>
         </Form>
       </>
     );
@@ -161,12 +161,12 @@ export default class Record extends RecordPage<Anagrafica> {
   datiAnagrafici(): Children {
     return (
       <>
-        {/*<md-outlined-card>*/}
+        <md-outlined-card>
           <h4 style={{marginLeft: '16px'}}>{__('Dati anagrafici')}</h4>
           <md-layout-grid>
             {this.datiAnagraficiFields().values().all()}
           </md-layout-grid>
-        {/*</md-outlined-card>*/}
+        </md-outlined-card>
       </>
     );
   }
@@ -210,12 +210,12 @@ export default class Record extends RecordPage<Anagrafica> {
   datiRecapito(): Children {
     return (
       <>
-        {/*<md-outlined-card>*/}
+        <md-outlined-card>
           <h4 style={{marginLeft: '16px'}}>{__('Dati di recapito')}</h4>
           <md-layout-grid>
             {this.datiRecapitoFields().values().all()}
           </md-layout-grid>
-        {/*</md-outlined-card>*/}
+        </md-outlined-card>
       </>
     );
   }
@@ -275,12 +275,12 @@ export default class Record extends RecordPage<Anagrafica> {
   datiAzienda(): Children {
     return (
       <div grid-span={6}>
-        {/*<md-outlined-card>*/}
+        <md-outlined-card>
           <h4 style={{marginLeft: '16px'}}>{__('Dati azienda')}</h4>
           <md-layout-grid>
             {this.datiAziendaFields().values().all()}
           </md-layout-grid>
-        {/*</md-outlined-card>*/}
+        </md-outlined-card>
       </div>
     );
   }
@@ -299,12 +299,12 @@ export default class Record extends RecordPage<Anagrafica> {
   datiPrivato(): Children {
     return (
       <div grid-span={6}>
-        {/*<md-outlined-card>*/}
+        <md-outlined-card>
           <h4 style={{marginLeft: '16px'}}>{__('Dati privato')}</h4>
-          <md-layout-grid-inner>
+          <md-layout-grid>
             {this.datiPrivatoFields().values().all()}
-          </md-layout-grid-inner>
-        {/*</md-outlined-card>*/}
+          </md-layout-grid>
+        </md-outlined-card>
       </div>
     );
   }
